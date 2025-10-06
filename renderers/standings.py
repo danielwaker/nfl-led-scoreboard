@@ -7,6 +7,7 @@ from utils import center_text_position
 
 
 def render_standings(canvas, layout: Layout, colors: Color, division: Division, stat):
+    print(division.name)
     league = division.name[:2]  # al or nl
     __fill_bg(canvas, colors, league)
     if canvas.width > 32:

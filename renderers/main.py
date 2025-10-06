@@ -22,29 +22,29 @@ class MainRenderer:
     def __init__(self, matrix, data):
         self.matrix = matrix
         self.data: Data = data
-        self.is_playoffs = self.data.schedule.date > self.data.headlines.important_dates.playoffs_start_date.date()
+        self.is_playoffs = False # TODO: self.data.schedule.date > self.data.headlines.important_dates.playoffs_start_date.date()
         self.canvas = matrix.CreateFrameCanvas()
         self.scrolling_text_pos = self.canvas.width
         self.game_changed_time = time.time()
         self.animation_time = 0
         self.standings_stat = "w"
-        self.standings_league = "NL"
+        self.standings_league = "NL" # TODO: NFC/AFC
 
     def render(self):
         screen = self.data.get_screen_type()
         # display the news ticker
         if screen == ScreenType.ALWAYS_NEWS:
-            self.__draw_news(permanent_cond)
+            True # TODO: self.__draw_news(permanent_cond)
         # display the standings
         elif screen == ScreenType.ALWAYS_STANDINGS:
             self.__render_standings()
         elif screen == ScreenType.LEAGUE_OFFDAY:
-            self.__render_offday(team_offday=False)
+            True # TODO: self.__render_offday(team_offday=False)
         elif screen == ScreenType.PREFERRED_TEAM_OFFDAY:
-            self.__render_offday(team_offday=True)
+            True # TODO: self.__render_offday(team_offday=True)
         # Playball!
         else:
-            self.__render_gameday()
+            True # TODO: self.__render_gameday()
 
     def __render_offday(self, team_offday=True) -> NoReturn:
         if team_offday:

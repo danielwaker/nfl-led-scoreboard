@@ -7,6 +7,7 @@ import debug
 from data import teams
 from data.update import UpdateStatus
 import data.headers
+from espnapi import espnapi, groups, season, standings
 
 STANDINGS_UPDATE_RATE = 15 * 60  # 15 minutes between standings updates
 
@@ -41,23 +42,26 @@ class Standings:
             try:
                 if not self.is_postseason():
 
-                    season_params = {
-                        "standingsTypes": "regularSeason",
-                        "leagueId": "103,104",
-                        "hydrate": "division,team,league",
-                        "season": self.date.strftime("%Y"),
-                        "fields": API_FIELDS,
-                    }
-                    if self.date != datetime.today().date():
-                        season_params["date"] = self.date.strftime("%m/%d/%Y")
+                    # season_params = {
+                    #     "standingsTypes": "regularSeason",
+                    #     "leagueId": "103,104",
+                    #     "hydrate": "division,team,league",
+                    #     "season": self.date.strftime("%Y"),
+                    #     "fields": API_FIELDS,
+                    # }
+                    # if self.date != datetime.today().date():
+                    #     season_params["date"] = self.date.strftime("%m/%d/%Y")
+                    
+                    standings = [(espnapi.get_standings(groups.GroupType[division]), division) for division in self.preferred_divisions]
+                    # standings = [Division(map(bruh, standings, n)) for n in range(len(standings[0]))]
+                    standings = [Division(division_data) for division_data in standings]
+                    # divisons_data = statsapi.get("standings", season_params, request_kwargs={"headers": data.headers.API_HEADERS})
+                    # standings = [Division(division_data) for division_data in divisons_data["records"]]
 
-                    divisons_data = statsapi.get("standings", season_params, request_kwargs={"headers": data.headers.API_HEADERS})
-                    standings = [Division(division_data) for division_data in divisons_data["records"]]
-
-                    if self.wild_cards:
-                        season_params["standingsTypes"] = "wildCard"
-                        wc_data = statsapi.get("standings", season_params, request_kwargs={"headers": data.headers.API_HEADERS})
-                        standings += [Division(data, wc=True) for data in wc_data["records"]]
+                    # if self.wild_cards:
+                        # season_params["standingsTypes"] = "wildCard"
+                        # wc_data = statsapi.get("standings", season_params, request_kwargs={"headers": data.headers.API_HEADERS})
+                        # standings += [Division(data, wc=True) for data in wc_data["records"]]
 
                     self.standings = standings
 
@@ -92,9 +96,10 @@ class Standings:
         return bool(self.standings) or (bool(self.leagues) and self.is_postseason())
 
     def is_postseason(self):
-        return self.date > self.playoffs_start_date
+        return False # TODO: self.date > self.playoffs_start_date
 
     def __standings_for(self, division_name):
+        print(division_name, self.standings[0].name)
         return next(division for division in self.standings if division.name == division_name)
 
     def current_standings(self):
@@ -113,24 +118,46 @@ class Standings:
 
 class Division:
     def __init__(self, data, wc=False):
-        if wc:
-            self.name = data["league"]["abbreviation"] + " Wild Card"
-        else:
-            self.name = data["division"]["nameShort"]
-        self.teams = [Team(team_data, wc) for team_data in data["teamRecords"][:5]]
+        def bruh(ids, ws, ts, ls, gb, i):
+            print(i)
+            # print(s)
+            return ids, int(ws["value"]), int(ts["value"]), int(ls["value"]), gb["value"]
+
+        self.name = data[1]
+        # print(data[0][0])
+        x = len(data[0][0])
+        
+        # [print(n) for n in range(x)]
+        tms = map(bruh, data[0][0], data[0][1], data[0][2], data[0][3], data[0][4], range(x))
+        self.teams = [Team(tm, wc) for tm in tms]
+        # if wc:
+        #     self.name = data["league"]["abbreviation"] + " Wild Card"
+        # else:
+        #     self.name = data["division"]["nameShort"]
+        # self.teams = [Team(team_data, wc) for team_data in data["teamRecords"][:5]]
 
 
 class Team:
     def __init__(self, data, wc):
-        self.team_abbrev = teams.TEAM_ID_ABBR[data["team"]["id"]]
-        self.w = data["wins"]
-        self.l = data["losses"]  # noqa: E741
-        if wc:
-            self.gb = data["wildCardGamesBack"]
-        else:
-            self.gb = data["gamesBack"]
-        self.clinched = data.get("clinched", False)
-        self.elim = data.get("wildCardEliminationNumber", "") == "E"
+        print(len(data))
+        print(data)
+        self.team_abbrev = teams.TEAM_ID_ABBR[int(data[0])]
+        self.w = data[1]
+        self.t = data[2]
+        self.l = data[3]
+        self.gb = data[4]
+
+        # self.team_abbrev = teams.TEAM_ID_ABBR[data["team"]["id"]]
+        # self.w = data["wins"]
+        # self.l = data["losses"]  # noqa: E741
+        # if wc:
+        #     self.gb = data["wildCardGamesBack"]
+        # else:
+        #     self.gb = data["gamesBack"]
+        self.clinched = False
+        self.elim = True
+        # TODO: self.clinched = data.get("clinched", False)
+        # TODO: self.elim = data.get("wildCardEliminationNumber", "") == "E"
 
 NL_IDS = {'wc36': 'F_3', 'wc45': 'F_4', 'dsA': 'D_3', 'dsB': 'D_4', 'cs': 'L_2' }
 AL_IDS = {'wc36': 'F_1', 'wc45': 'F_2', 'dsA': 'D_1', 'dsB': 'D_2', 'cs': 'L_1' }

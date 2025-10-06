@@ -1,0 +1,2042 @@
+{
+  "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/standings/0?lang=en&region=us",
+  "id": "0",
+  "name": "overall",
+  "displayName": "Standings",
+  "standings": [
+    {
+      "team": {
+        "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/11?lang=en&region=us"
+      },
+      "records": [
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/11/records/0?lang=en&region=us",
+          "id": "0",
+          "name": "overall",
+          "abbreviation": "Any",
+          "type": "total",
+          "summary": "3-1",
+          "displayValue": "3-1",
+          "value": 0.75,
+          "stats": [
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "OTWins",
+              "displayName": "Overtime Wins",
+              "shortDisplayName": "OT Wins",
+              "description": "Number of Overtime Wins",
+              "abbreviation": "OTW",
+              "type": "otwins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "avgPointsAgainst",
+              "displayName": "Opponent Points Per Game",
+              "shortDisplayName": "OPTS/G",
+              "description": "Opponent Points Per Game",
+              "abbreviation": "OPTS/G",
+              "type": "avgpointsagainst",
+              "value": 20.75,
+              "displayValue": "20.8"
+            },
+            {
+              "name": "avgPointsFor",
+              "displayName": "Points Per Game",
+              "shortDisplayName": "PTS/G",
+              "description": "Points Per Game",
+              "abbreviation": "PTS/G",
+              "type": "avgpointsfor",
+              "value": 30.75,
+              "displayValue": "30.8"
+            },
+            {
+              "name": "differential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "differential",
+              "value": 40,
+              "displayValue": "+40"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "gamesBehind",
+              "displayName": "Games Back",
+              "shortDisplayName": "GB",
+              "description": "Games Back",
+              "abbreviation": "GB",
+              "type": "gamesbehind",
+              "value": 0,
+              "displayValue": "-"
+            },
+            {
+              "name": "gamesPlayed",
+              "displayName": "Games Played",
+              "shortDisplayName": "GP",
+              "description": "Games Played",
+              "abbreviation": "GP",
+              "type": "gamesplayed",
+              "value": 4,
+              "displayValue": "4"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "playoffSeed",
+              "displayName": "Position",
+              "shortDisplayName": "POS",
+              "description": "Playoff Seed",
+              "abbreviation": "SEED",
+              "type": "playoffseed",
+              "value": 4,
+              "displayValue": "4"
+            },
+            {
+              "name": "pointDifferential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "pointdifferential",
+              "value": 40,
+              "displayValue": "+40"
+            },
+            {
+              "name": "points",
+              "displayName": "Points",
+              "shortDisplayName": "PTS",
+              "description": "Total Points",
+              "abbreviation": "PTS",
+              "type": "points",
+              "value": 1,
+              "displayValue": "1.0"
+            },
+            {
+              "name": "pointsAgainst",
+              "displayName": "Points Against",
+              "shortDisplayName": "PA",
+              "description": "Total Points Against",
+              "abbreviation": "PA",
+              "type": "pointsagainst",
+              "value": 83,
+              "displayValue": "83"
+            },
+            {
+              "name": "pointsFor",
+              "displayName": "Points For",
+              "shortDisplayName": "PF",
+              "description": "Total Points For",
+              "abbreviation": "PF",
+              "type": "pointsfor",
+              "value": 123,
+              "displayValue": "123"
+            },
+            {
+              "name": "streak",
+              "displayName": "Streak",
+              "shortDisplayName": "STRK",
+              "description": "Current Streak",
+              "abbreviation": "STRK",
+              "type": "streak",
+              "value": -1,
+              "displayValue": "L1"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0.75,
+              "displayValue": ".750"
+            },
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 3,
+              "displayValue": "3"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "divisionRecord",
+              "displayName": "Division record",
+              "shortDisplayName": "DIV",
+              "description": "Division Record",
+              "abbreviation": "DIV",
+              "type": "divisionrecord",
+              "value": 0,
+              "displayValue": "1-0"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 1,
+              "displayValue": "1.000"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/11/records/13?lang=en&region=us",
+          "id": "13",
+          "name": "Home",
+          "displayName": "Home",
+          "shortDisplayName": "HOME",
+          "description": "Home Record",
+          "type": "home",
+          "summary": "2-0",
+          "displayValue": "2-0",
+          "value": 1,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/11/records/14?lang=en&region=us",
+          "id": "14",
+          "name": "Road",
+          "displayName": "Road",
+          "shortDisplayName": "AWAY",
+          "description": "Away Record",
+          "type": "road",
+          "summary": "1-1",
+          "displayValue": "1-1",
+          "value": 0.5,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0.5,
+              "displayValue": ".500"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/11/records/17?lang=en&region=us",
+          "id": "17",
+          "name": "vs. Div.",
+          "displayName": "DIV",
+          "shortDisplayName": "DIV",
+          "description": "Division Record",
+          "type": "vsdiv",
+          "summary": "1-0",
+          "displayValue": "1-0",
+          "value": 1,
+          "stats": [
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/11/records/906?lang=en&region=us",
+          "id": "906",
+          "name": "vs. Conf.",
+          "displayName": "CONF",
+          "shortDisplayName": "CONF",
+          "description": "Conference Record",
+          "type": "vsconf",
+          "summary": "3-0",
+          "displayValue": "3-0",
+          "value": 1,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 3,
+              "displayValue": "3"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team": {
+        "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/30?lang=en&region=us"
+      },
+      "records": [
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/30/records/0?lang=en&region=us",
+          "id": "0",
+          "name": "overall",
+          "abbreviation": "Any",
+          "type": "total",
+          "summary": "3-1",
+          "displayValue": "3-1",
+          "value": 0.75,
+          "stats": [
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "OTWins",
+              "displayName": "Overtime Wins",
+              "shortDisplayName": "OT Wins",
+              "description": "Number of Overtime Wins",
+              "abbreviation": "OTW",
+              "type": "otwins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "avgPointsAgainst",
+              "displayName": "Opponent Points Per Game",
+              "shortDisplayName": "OPTS/G",
+              "description": "Opponent Points Per Game",
+              "abbreviation": "OPTS/G",
+              "type": "avgpointsagainst",
+              "value": 18,
+              "displayValue": "18.0"
+            },
+            {
+              "name": "avgPointsFor",
+              "displayName": "Points Per Game",
+              "shortDisplayName": "PTS/G",
+              "description": "Points Per Game",
+              "abbreviation": "PTS/G",
+              "type": "avgpointsfor",
+              "value": 24,
+              "displayValue": "24.0"
+            },
+            {
+              "name": "differential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "differential",
+              "value": 24,
+              "displayValue": "+24"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "gamesBehind",
+              "displayName": "Games Back",
+              "shortDisplayName": "GB",
+              "description": "Games Back",
+              "abbreviation": "GB",
+              "type": "gamesbehind",
+              "value": 0,
+              "displayValue": "-"
+            },
+            {
+              "name": "gamesPlayed",
+              "displayName": "Games Played",
+              "shortDisplayName": "GP",
+              "description": "Games Played",
+              "abbreviation": "GP",
+              "type": "gamesplayed",
+              "value": 4,
+              "displayValue": "4"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 0.5,
+              "displayValue": "0.500"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "playoffSeed",
+              "displayName": "Position",
+              "shortDisplayName": "POS",
+              "description": "Playoff Seed",
+              "abbreviation": "SEED",
+              "type": "playoffseed",
+              "value": 5,
+              "displayValue": "5"
+            },
+            {
+              "name": "pointDifferential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "pointdifferential",
+              "value": 24,
+              "displayValue": "+24"
+            },
+            {
+              "name": "points",
+              "displayName": "Points",
+              "shortDisplayName": "PTS",
+              "description": "Total Points",
+              "abbreviation": "PTS",
+              "type": "points",
+              "value": 1,
+              "displayValue": "1.0"
+            },
+            {
+              "name": "pointsAgainst",
+              "displayName": "Points Against",
+              "shortDisplayName": "PA",
+              "description": "Total Points Against",
+              "abbreviation": "PA",
+              "type": "pointsagainst",
+              "value": 72,
+              "displayValue": "72"
+            },
+            {
+              "name": "pointsFor",
+              "displayName": "Points For",
+              "shortDisplayName": "PF",
+              "description": "Total Points For",
+              "abbreviation": "PF",
+              "type": "pointsfor",
+              "value": 96,
+              "displayValue": "96"
+            },
+            {
+              "name": "streak",
+              "displayName": "Streak",
+              "shortDisplayName": "STRK",
+              "description": "Current Streak",
+              "abbreviation": "STRK",
+              "type": "streak",
+              "value": 2,
+              "displayValue": "W2"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0.75,
+              "displayValue": ".750"
+            },
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 3,
+              "displayValue": "3"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "divisionRecord",
+              "displayName": "Division record",
+              "shortDisplayName": "DIV",
+              "description": "Division Record",
+              "abbreviation": "DIV",
+              "type": "divisionrecord",
+              "value": 0,
+              "displayValue": "1-0"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 1,
+              "displayValue": "1.000"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/30/records/13?lang=en&region=us",
+          "id": "13",
+          "name": "Home",
+          "displayName": "Home",
+          "shortDisplayName": "HOME",
+          "description": "Home Record",
+          "type": "home",
+          "summary": "2-0",
+          "displayValue": "2-0",
+          "value": 1,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/30/records/14?lang=en&region=us",
+          "id": "14",
+          "name": "Road",
+          "displayName": "Road",
+          "shortDisplayName": "AWAY",
+          "description": "Away Record",
+          "type": "road",
+          "summary": "1-1",
+          "displayValue": "1-1",
+          "value": 0.5,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0.5,
+              "displayValue": ".500"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/30/records/17?lang=en&region=us",
+          "id": "17",
+          "name": "vs. Div.",
+          "displayName": "DIV",
+          "shortDisplayName": "DIV",
+          "description": "Division Record",
+          "type": "vsdiv",
+          "summary": "1-0",
+          "displayValue": "1-0",
+          "value": 1,
+          "stats": [
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/30/records/906?lang=en&region=us",
+          "id": "906",
+          "name": "vs. Conf.",
+          "displayName": "CONF",
+          "shortDisplayName": "CONF",
+          "description": "Conference Record",
+          "type": "vsconf",
+          "summary": "1-1",
+          "displayValue": "1-1",
+          "value": 0.5,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 0.5,
+              "displayValue": "0.500"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team": {
+        "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/34?lang=en&region=us"
+      },
+      "records": [
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/34/records/0?lang=en&region=us",
+          "id": "0",
+          "name": "overall",
+          "abbreviation": "Any",
+          "type": "total",
+          "summary": "1-3",
+          "displayValue": "1-3",
+          "value": 0.25,
+          "stats": [
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "OTWins",
+              "displayName": "Overtime Wins",
+              "shortDisplayName": "OT Wins",
+              "description": "Number of Overtime Wins",
+              "abbreviation": "OTW",
+              "type": "otwins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "avgPointsAgainst",
+              "displayName": "Opponent Points Per Game",
+              "shortDisplayName": "OPTS/G",
+              "description": "Opponent Points Per Game",
+              "abbreviation": "OPTS/G",
+              "type": "avgpointsagainst",
+              "value": 12.75,
+              "displayValue": "12.8"
+            },
+            {
+              "name": "avgPointsFor",
+              "displayName": "Points Per Game",
+              "shortDisplayName": "PTS/G",
+              "description": "Points Per Game",
+              "abbreviation": "PTS/G",
+              "type": "avgpointsfor",
+              "value": 16,
+              "displayValue": "16.0"
+            },
+            {
+              "name": "differential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "differential",
+              "value": 13,
+              "displayValue": "+13"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 0.5,
+              "displayValue": "0.500"
+            },
+            {
+              "name": "gamesBehind",
+              "displayName": "Games Back",
+              "shortDisplayName": "GB",
+              "description": "Games Back",
+              "abbreviation": "GB",
+              "type": "gamesbehind",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "gamesPlayed",
+              "displayName": "Games Played",
+              "shortDisplayName": "GP",
+              "description": "Games Played",
+              "abbreviation": "GP",
+              "type": "gamesplayed",
+              "value": 4,
+              "displayValue": "4"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 0.5,
+              "displayValue": "0.500"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 3,
+              "displayValue": "3"
+            },
+            {
+              "name": "playoffSeed",
+              "displayName": "Position",
+              "shortDisplayName": "POS",
+              "description": "Playoff Seed",
+              "abbreviation": "SEED",
+              "type": "playoffseed",
+              "value": 11,
+              "displayValue": "11"
+            },
+            {
+              "name": "pointDifferential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "pointdifferential",
+              "value": 13,
+              "displayValue": "+13"
+            },
+            {
+              "name": "points",
+              "displayName": "Points",
+              "shortDisplayName": "PTS",
+              "description": "Total Points",
+              "abbreviation": "PTS",
+              "type": "points",
+              "value": -1,
+              "displayValue": "-1.0"
+            },
+            {
+              "name": "pointsAgainst",
+              "displayName": "Points Against",
+              "shortDisplayName": "PA",
+              "description": "Total Points Against",
+              "abbreviation": "PA",
+              "type": "pointsagainst",
+              "value": 51,
+              "displayValue": "51"
+            },
+            {
+              "name": "pointsFor",
+              "displayName": "Points For",
+              "shortDisplayName": "PF",
+              "description": "Total Points For",
+              "abbreviation": "PF",
+              "type": "pointsfor",
+              "value": 64,
+              "displayValue": "64"
+            },
+            {
+              "name": "streak",
+              "displayName": "Streak",
+              "shortDisplayName": "STRK",
+              "description": "Current Streak",
+              "abbreviation": "STRK",
+              "type": "streak",
+              "value": 1,
+              "displayValue": "W1"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0.25,
+              "displayValue": ".250"
+            },
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "divisionRecord",
+              "displayName": "Division record",
+              "shortDisplayName": "DIV",
+              "description": "Division Record",
+              "abbreviation": "DIV",
+              "type": "divisionrecord",
+              "value": 0,
+              "displayValue": "1-1"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 1,
+              "displayValue": "1.000"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/34/records/13?lang=en&region=us",
+          "id": "13",
+          "name": "Home",
+          "displayName": "Home",
+          "shortDisplayName": "HOME",
+          "description": "Home Record",
+          "type": "home",
+          "summary": "1-1",
+          "displayValue": "1-1",
+          "value": 0.5,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0.5,
+              "displayValue": ".500"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/34/records/14?lang=en&region=us",
+          "id": "14",
+          "name": "Road",
+          "displayName": "Road",
+          "shortDisplayName": "AWAY",
+          "description": "Away Record",
+          "type": "road",
+          "summary": "0-2",
+          "displayValue": "0-2",
+          "value": 0,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0,
+              "displayValue": ".000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/34/records/17?lang=en&region=us",
+          "id": "17",
+          "name": "vs. Div.",
+          "displayName": "DIV",
+          "shortDisplayName": "DIV",
+          "description": "Division Record",
+          "type": "vsdiv",
+          "summary": "1-1",
+          "displayValue": "1-1",
+          "value": 0.5,
+          "stats": [
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 1,
+              "displayValue": "1.000"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 0.5,
+              "displayValue": "0.500"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/34/records/906?lang=en&region=us",
+          "id": "906",
+          "name": "vs. Conf.",
+          "displayName": "CONF",
+          "shortDisplayName": "CONF",
+          "description": "Conference Record",
+          "type": "vsconf",
+          "summary": "1-1",
+          "displayValue": "1-1",
+          "value": 0.5,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 1,
+              "displayValue": "1"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 0.5,
+              "displayValue": "0.500"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team": {
+        "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/10?lang=en&region=us"
+      },
+      "records": [
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/10/records/0?lang=en&region=us",
+          "id": "0",
+          "name": "overall",
+          "abbreviation": "Any",
+          "type": "total",
+          "summary": "0-4",
+          "displayValue": "0-4",
+          "value": 0,
+          "stats": [
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "OTWins",
+              "displayName": "Overtime Wins",
+              "shortDisplayName": "OT Wins",
+              "description": "Number of Overtime Wins",
+              "abbreviation": "OTW",
+              "type": "otwins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "avgPointsAgainst",
+              "displayName": "Opponent Points Per Game",
+              "shortDisplayName": "OPTS/G",
+              "description": "Opponent Points Per Game",
+              "abbreviation": "OPTS/G",
+              "type": "avgpointsagainst",
+              "value": 30,
+              "displayValue": "30.0"
+            },
+            {
+              "name": "avgPointsFor",
+              "displayName": "Points Per Game",
+              "shortDisplayName": "PTS/G",
+              "description": "Points Per Game",
+              "abbreviation": "PTS/G",
+              "type": "avgpointsfor",
+              "value": 12.75,
+              "displayValue": "12.8"
+            },
+            {
+              "name": "differential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "differential",
+              "value": -69,
+              "displayValue": "-69"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "gamesBehind",
+              "displayName": "Games Back",
+              "shortDisplayName": "GB",
+              "description": "Games Back",
+              "abbreviation": "GB",
+              "type": "gamesbehind",
+              "value": 3,
+              "displayValue": "3"
+            },
+            {
+              "name": "gamesPlayed",
+              "displayName": "Games Played",
+              "shortDisplayName": "GP",
+              "description": "Games Played",
+              "abbreviation": "GP",
+              "type": "gamesplayed",
+              "value": 4,
+              "displayValue": "4"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 4,
+              "displayValue": "4"
+            },
+            {
+              "name": "playoffSeed",
+              "displayName": "Position",
+              "shortDisplayName": "POS",
+              "description": "Playoff Seed",
+              "abbreviation": "SEED",
+              "type": "playoffseed",
+              "value": 16,
+              "displayValue": "16"
+            },
+            {
+              "name": "pointDifferential",
+              "displayName": "Point Differential",
+              "shortDisplayName": "DIFF",
+              "description": "Point Differential",
+              "abbreviation": "DIFF",
+              "type": "pointdifferential",
+              "value": -69,
+              "displayValue": "-69"
+            },
+            {
+              "name": "points",
+              "displayName": "Points",
+              "shortDisplayName": "PTS",
+              "description": "Total Points",
+              "abbreviation": "PTS",
+              "type": "points",
+              "value": -2,
+              "displayValue": "-2.0"
+            },
+            {
+              "name": "pointsAgainst",
+              "displayName": "Points Against",
+              "shortDisplayName": "PA",
+              "description": "Total Points Against",
+              "abbreviation": "PA",
+              "type": "pointsagainst",
+              "value": 120,
+              "displayValue": "120"
+            },
+            {
+              "name": "pointsFor",
+              "displayName": "Points For",
+              "shortDisplayName": "PF",
+              "description": "Total Points For",
+              "abbreviation": "PF",
+              "type": "pointsfor",
+              "value": 51,
+              "displayValue": "51"
+            },
+            {
+              "name": "streak",
+              "displayName": "Streak",
+              "shortDisplayName": "STRK",
+              "description": "Current Streak",
+              "abbreviation": "STRK",
+              "type": "streak",
+              "value": -4,
+              "displayValue": "L4"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0,
+              "displayValue": ".000"
+            },
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "divisionRecord",
+              "displayName": "Division record",
+              "shortDisplayName": "DIV",
+              "description": "Division Record",
+              "abbreviation": "DIV",
+              "type": "divisionrecord",
+              "value": 0,
+              "displayValue": "0-2"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 0,
+              "displayValue": "0.000"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/10/records/13?lang=en&region=us",
+          "id": "13",
+          "name": "Home",
+          "displayName": "Home",
+          "shortDisplayName": "HOME",
+          "description": "Home Record",
+          "type": "home",
+          "summary": "0-2",
+          "displayValue": "0-2",
+          "value": 0,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0,
+              "displayValue": ".000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/10/records/14?lang=en&region=us",
+          "id": "14",
+          "name": "Road",
+          "displayName": "Road",
+          "shortDisplayName": "AWAY",
+          "description": "Away Record",
+          "type": "road",
+          "summary": "0-2",
+          "displayValue": "0-2",
+          "value": 0,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "winPercent",
+              "displayName": "Win Percentage",
+              "shortDisplayName": "PCT",
+              "description": "Winning Percentage",
+              "abbreviation": "PCT",
+              "type": "winpercent",
+              "value": 0,
+              "displayValue": ".000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/10/records/17?lang=en&region=us",
+          "id": "17",
+          "name": "vs. Div.",
+          "displayName": "DIV",
+          "shortDisplayName": "DIV",
+          "description": "Division Record",
+          "type": "vsdiv",
+          "summary": "0-2",
+          "displayValue": "0-2",
+          "value": 0,
+          "stats": [
+            {
+              "name": "divisionWins",
+              "displayName": "Division Wins ",
+              "shortDisplayName": "DW",
+              "description": "Division Winning ",
+              "abbreviation": "DW",
+              "type": "divisionwins",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionLosses",
+              "displayName": "Division Losses",
+              "shortDisplayName": "DL",
+              "description": "Division Losses",
+              "abbreviation": "DL",
+              "type": "divisionlosses",
+              "value": 2,
+              "displayValue": "2"
+            },
+            {
+              "name": "divisionTies",
+              "displayName": "Division Tie ",
+              "shortDisplayName": "DT",
+              "description": "Division Tie ",
+              "abbreviation": "DT",
+              "type": "divisionties",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "divisionWinPercent",
+              "displayName": "Division Win Percentage",
+              "shortDisplayName": "DPCT",
+              "description": "Division Winning Percentage",
+              "abbreviation": "DPCT",
+              "type": "divisionwinpercent",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        },
+        {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/types/2/groups/13/teams/10/records/906?lang=en&region=us",
+          "id": "906",
+          "name": "vs. Conf.",
+          "displayName": "CONF",
+          "shortDisplayName": "CONF",
+          "description": "Conference Record",
+          "type": "vsconf",
+          "summary": "0-3",
+          "displayValue": "0-3",
+          "value": 0,
+          "stats": [
+            {
+              "name": "wins",
+              "displayName": "Wins",
+              "shortDisplayName": "W",
+              "description": "Wins",
+              "abbreviation": "W",
+              "type": "wins",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "losses",
+              "displayName": "Losses",
+              "shortDisplayName": "L",
+              "description": "Losses",
+              "abbreviation": "L",
+              "type": "losses",
+              "value": 3,
+              "displayValue": "3"
+            },
+            {
+              "name": "ties",
+              "displayName": "Ties",
+              "shortDisplayName": "T",
+              "description": "Ties",
+              "abbreviation": "T",
+              "type": "ties",
+              "value": 0,
+              "displayValue": "0"
+            },
+            {
+              "name": "leagueWinPercent",
+              "displayName": "League Win Percentage",
+              "shortDisplayName": "LPCT",
+              "description": "League Winning Percentage",
+              "abbreviation": "LPCT",
+              "type": "leaguewinpercent",
+              "value": 0,
+              "displayValue": "0.000"
+            },
+            {
+              "name": "OTLosses",
+              "displayName": "Overtime Losses",
+              "shortDisplayName": "OTL",
+              "description": "Number of Overtime Losses",
+              "abbreviation": "OTL",
+              "type": "otlosses",
+              "value": 0,
+              "displayValue": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "standings",
+        "desktop"
+      ],
+      "href": "https://www.espn.com/nfl/standings/_/group/13",
+      "text": "Table",
+      "shortText": "Standings",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ]
+}
