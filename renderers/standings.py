@@ -72,7 +72,7 @@ def __render_static_wide_standings(canvas, layout, colors, division, league):
         team_text = team.team_abbrev
         graphics.DrawText(canvas, font["font"], coords["team"]["name"]["x"], offset, color, team_text)
 
-        record_text = "{:>3}-{:<3}".format(team.w, team.l)
+        record_text = "{:>3}{:^3}{:<3}".format(team.w, f"-{team.l}-", team.t)
         record_text_x = center_text_position(record_text, coords["team"]["record"]["x"], font["size"]["width"])
 
         if "-" in str(team.gb):
