@@ -55,15 +55,23 @@ def __render_static_wide_standings(canvas, layout, colors, division, league):
     team_elim_color = get_standings_color_node(colors, "team.elim", league)
     team_clinched_color = get_standings_color_node(colors, "team.clinched", league)
     start = coords.get("start", 0)
+    division_name_start = 6
     offset = coords["offset"]
 
     graphics.DrawLine(canvas, 0, start, coords["width"], start, divider_color)
 
     graphics.DrawLine(
-        canvas, coords["divider"]["x"], start, coords["divider"]["x"], start + coords["height"], divider_color
+        canvas, coords["divider"]["x"], division_name_start, coords["divider"]["x"], start + coords["height"], divider_color
     )
 
     offset += start
+
+    # Draw Division Name since NFL has 4 teams/division
+    graphics.DrawLine(canvas, 0, offset, coords["width"], offset, divider_color)
+    division_center_pos = coords["team"]["record"]["x"] + 2
+    record_text_x = center_text_position(division.name.replace("_"," "), division_center_pos, font["size"]["width"])
+    graphics.DrawText(canvas, font["font"], record_text_x, offset, team_name_color, division.name.replace("_"," "))
+    offset += coords["offset"]
 
     for team in division.teams:
         if len(division.teams) == 4 or ("wild" in division.name.lower() and 5 <= team.seed <= 8):
