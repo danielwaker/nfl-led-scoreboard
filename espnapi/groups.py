@@ -2,7 +2,9 @@ from enum import Enum
 
 class GroupType(Enum):
     AFC           = 8
+    AFC_WILD_CARD = 8
     NFC           = 7
+    NFC_WILD_CARD = 7
     NFC_EAST      = 1
     NFC_NORTH     = 10
     NFC_SOUTH     = 11

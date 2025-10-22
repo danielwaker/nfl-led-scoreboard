@@ -29,5 +29,6 @@ def get_standings(
     ties = [next((stat for stat in record["stats"] if stat["name"] == "ties"), None) for record in records]
     losses = [next((stat for stat in record["stats"] if stat["name"] == "losses"), None) for record in records]
     gamesBehind = [next((stat for stat in record["stats"] if stat["name"] == "gamesBehind"), None) for record in records]
+    playoffSeed = [next((stat for stat in record["stats"] if stat["name"] == "playoffSeed"), None) for record in records]
 
-    return team_ids, wins, ties, losses, gamesBehind
+    return team_ids, wins, ties, losses, gamesBehind, playoffSeed

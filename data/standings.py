@@ -51,8 +51,11 @@ class Standings:
                     # }
                     # if self.date != datetime.today().date():
                     #     season_params["date"] = self.date.strftime("%m/%d/%Y")
-                    
-                    standings = [(espnapi.get_standings(groups.GroupType[division]), division) for division in self.preferred_divisions]
+
+                    standings = [(espnapi.get_standings(
+                        groups.GroupType[division],
+                        # standings.StandingsType.Playoffs if "wild" in division.lower() else standings.StandingsType.Overall
+                        ), division) for division in self.preferred_divisions]
                     # standings = [Division(map(bruh, standings, n)) for n in range(len(standings[0]))]
                     standings = [Division(division_data) for division_data in standings]
                     # divisons_data = statsapi.get("standings", season_params, request_kwargs={"headers": data.headers.API_HEADERS})
@@ -118,18 +121,29 @@ class Standings:
 
 class Division:
     def __init__(self, data, wc=False):
-        def bruh(ids, ws, ts, ls, gb, i):
-            print(i)
+        def bruh(ids, ws, ts, ls, gb, seed, i):
+            # print(i)
             # print(s)
-            return ids, int(ws["value"]), int(ts["value"]), int(ls["value"]), gb["value"]
+            return teams.TEAM_ID_ABBR[int(ids)], int(ws["value"]), int(ts["value"]), int(ls["value"]), gb["value"], seed["value"]
 
         self.name = data[1]
-        # print(data[0][0])
+        
         x = len(data[0][0])
         
-        # [print(n) for n in range(x)]
-        tms = map(bruh, data[0][0], data[0][1], data[0][2], data[0][3], data[0][4], range(x))
+        tms = map(bruh, data[0][0], data[0][1], data[0][2], data[0][3], data[0][4], data[0][5], range(x))
         self.teams = [Team(tm, wc) for tm in tms]
+
+        # Fix GB for wild cards
+        if "wild" in self.name.lower():
+            teamz = self.teams
+            seven = teamz[len(teamz) - (2 + 8)] # 7 out of 16
+            eight = teamz[len(teamz) - (1 + 8)] # 8 out of 16
+            wins = eight.w - seven.w
+            losses = eight.l - seven.l
+            gb = (wins + losses)/2
+            teamz[len(teamz) - 9].gb = gb
+
+        print("GB2", self.teams[len(self.teams) - 1].gb)
         # if wc:
         #     self.name = data["league"]["abbreviation"] + " Wild Card"
         # else:
@@ -141,11 +155,12 @@ class Team:
     def __init__(self, data, wc):
         print(len(data))
         print(data)
-        self.team_abbrev = teams.TEAM_ID_ABBR[int(data[0])]
+        self.team_abbrev = data[0]
         self.w = data[1]
         self.t = data[2]
         self.l = data[3]
         self.gb = data[4]
+        self.seed = data[5]
 
         # self.team_abbrev = teams.TEAM_ID_ABBR[data["team"]["id"]]
         # self.w = data["wins"]

@@ -8,7 +8,7 @@ from utils import center_text_position
 
 def render_standings(canvas, layout: Layout, colors: Color, division: Division, stat):
     print(division.name)
-    league = division.name[:2]  # al or nl
+    league = division.name[:3]  # afc or nfc
     __fill_bg(canvas, colors, league)
     if canvas.width > 32:
         __render_static_wide_standings(canvas, layout, colors, division, league)
@@ -66,26 +66,27 @@ def __render_static_wide_standings(canvas, layout, colors, division, league):
     offset += start
 
     for team in division.teams:
-        graphics.DrawLine(canvas, 0, offset, coords["width"], offset, divider_color)
+        if len(division.teams) == 4 or ("wild" in division.name.lower() and 5 <= team.seed <= 8):
+            graphics.DrawLine(canvas, 0, offset, coords["width"], offset, divider_color)
 
-        color = team_elim_color if team.elim else (team_clinched_color if team.clinched else team_name_color)
-        team_text = team.team_abbrev
-        graphics.DrawText(canvas, font["font"], coords["team"]["name"]["x"], offset, color, team_text)
+            color = team_elim_color if team.elim else (team_clinched_color if team.clinched else team_name_color)
+            team_text = team.team_abbrev
+            graphics.DrawText(canvas, font["font"], coords["team"]["name"]["x"], offset, color, team_text)
 
-        record_text = "{:>3}{:^3}{:<3}".format(team.w, f"-{team.l}-", team.t)
-        record_text_x = center_text_position(record_text, coords["team"]["record"]["x"], font["size"]["width"])
+            record_text = "{:>3}-{:<3}".format(team.w, team.l) if team.t == 0 else "{:>3}{:^3}{:<3}".format(team.w, f"-{team.l}-", team.t)
+            record_text_x = center_text_position(record_text, coords["team"]["record"]["x"], font["size"]["width"])
 
-        if "-" in str(team.gb):
-            gb_text = " -  "
-        else:
-            gb_text = "{:>4s}".format(str(team.gb))
-        gb_text_x = coords["team"]["games_back"]["x"] - (len(gb_text) * font["size"]["width"])
+            if team.gb == 0 or ("wild" in division.name.lower() and 5 <= team.seed <= 7):
+                gb_text = " -  "
+            else:
+                gb_text = "{:>4s}".format(str(team.gb))
+            gb_text_x = coords["team"]["games_back"]["x"] - (len(gb_text) * font["size"]["width"])
 
-        color = team_elim_color if team.elim else (team_clinched_color if team.clinched else team_stat_color)
-        graphics.DrawText(canvas, font["font"], record_text_x, offset, color, record_text)
-        graphics.DrawText(canvas, font["font"], gb_text_x, offset, color, gb_text)
+            color = team_elim_color if team.elim else (team_clinched_color if team.clinched else team_stat_color)
+            graphics.DrawText(canvas, font["font"], record_text_x, offset, color, record_text)
+            graphics.DrawText(canvas, font["font"], gb_text_x, offset, color, gb_text)
 
-        offset += coords["offset"]
+            offset += coords["offset"]
 
 
 def __fill_bg(canvas, colors, league: str):
