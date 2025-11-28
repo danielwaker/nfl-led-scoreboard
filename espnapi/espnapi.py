@@ -6,13 +6,18 @@ from espnapi.standings import StandingsType
 
 URL = "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/"
 
+default_clincher = {
+              "name": "clincher",
+              "displayValue": ""
+            }
+
 def get_standings(
         group_type: GroupType,
-        standings_type: StandingsType = StandingsType.OVERALL,
+        standings_type: StandingsType = StandingsType.PLAYOFF, # playoff records come back alphabetical...
         season_type: SeasonType = SeasonType.REGULAR_SEASON
     ):
     url = f"{URL}seasons/2025/types/{season_type.value}/groups/{group_type.value}/standings/{standings_type.value}?lang=en&region=us"
-    # print(url)
+    print(url)
     data = requests.get(url)
     data = data.json()
     # print(data)
@@ -23,12 +28,45 @@ def get_standings(
     team_ids = [team['$ref'][82:84].strip("?") for team in teams]
     # print(team_ids)
 
-    records = [record["records"][0] for record in data["standings"]] # 0 is overall
+    recordIndex = 0
+    if standings_type is StandingsType.PLAYOFF:
+        recordIndex = 1
+    # records = [record["records"][0] for record in data["standings"]] # 0 is overall
+    records2 = [record["records"][recordIndex] for record in data["standings"]]
+    # records3 =[next((record for stat in record["stats"] if stat["name"] == "playoffSeed"), None) for record in records]
+    records4 = [next((record for stat in record["stats"] if stat["name"] == "playoffSeed"), None) for record in records2]
+    # records5 = records3 + records4
+    records = [x for x in records4 if x is not None]
+
+    X, Y = [], []
+
+    # Region: zip records and teams to sort
+    # if standings_type is StandingsType.PLAYOFF:
+    new_list = []
+
+    for x, y in zip(records, team_ids):
+        new_list.append((x, y))
+
+    new_list.sort(key=lambda record: (next((stat for stat in record[0]["stats"] if stat["name"] == "playoffSeed"), None))["value"])
+
+
+    for x, y in new_list:
+        X.append(x)
+        Y.append(y)
+    
+    records = X
+    team_ids = Y
+
     # print(records[0])
     wins = [next((stat for stat in record["stats"] if stat["name"] == "wins"), None) for record in records]
     ties = [next((stat for stat in record["stats"] if stat["name"] == "ties"), None) for record in records]
     losses = [next((stat for stat in record["stats"] if stat["name"] == "losses"), None) for record in records]
     gamesBehind = [next((stat for stat in record["stats"] if stat["name"] == "gamesBehind"), None) for record in records]
     playoffSeed = [next((stat for stat in record["stats"] if stat["name"] == "playoffSeed"), None) for record in records]
+    clincher = [next((stat for stat in record["stats"] if stat["name"] == "clincher"), default_clincher) for record in records]
 
-    return team_ids, wins, ties, losses, gamesBehind, playoffSeed
+
+    test = team_ids, wins, ties, losses, gamesBehind, playoffSeed, clincher
+
+    print(test)
+    return team_ids, wins, ties, losses, gamesBehind, playoffSeed, clincher

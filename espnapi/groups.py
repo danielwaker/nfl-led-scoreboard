@@ -24,3 +24,17 @@ def is_division(group_type: GroupType):
             or group_type == GroupType.AFC_EAST
             or group_type == GroupType.AFC_SOUTH
             or group_type == GroupType.AFC_WEST)
+
+def all_standings():
+    return [
+        "NFC_EAST",
+        "NFC_NORTH",
+        "NFC_SOUTH",
+        "NFC_WEST",
+        "NFC_WILD_CARD",
+        "AFC_EAST",
+        "AFC_NORTH",
+        "AFC_SOUTH",
+        "AFC_WEST",
+        "AFC_WILD_CARD",
+    ]

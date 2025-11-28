@@ -24,7 +24,10 @@ class Standings:
         self.date = self.config.parse_today()
         self.playoffs_start_date = playoffs_start_date.date()
         self.starttime = time.time()
-        self.preferred_divisions = config.preferred_divisions
+        if config.preferred_divisions == ["ALL"]:
+            self.preferred_divisions = groups.all_standings()
+        else:
+            self.preferred_divisions = config.preferred_divisions
         self.wild_cards = any("Wild" in division for division in config.preferred_divisions)
         self.current_division_index = 0
 
@@ -50,11 +53,11 @@ class Standings:
                     #     "fields": API_FIELDS,
                     # }
                     # if self.date != datetime.today().date():
-                    #     season_params["date"] = self.date.strftime("%m/%d/%Y")
+                    #     season_params["date"] = self.date.strftime("%m/%d/%Y")                        
 
                     standings = [(espnapi.get_standings(
                         groups.GroupType[division],
-                        # standings.StandingsType.Playoffs if "wild" in division.lower() else standings.StandingsType.Overall
+                        espnapi.StandingsType.PLAYOFF if "wild" in division.lower() else espnapi.StandingsType.OVERALL
                         ), division) for division in self.preferred_divisions]
                     # standings = [Division(map(bruh, standings, n)) for n in range(len(standings[0]))]
                     standings = [Division(division_data) for division_data in standings]
@@ -121,29 +124,31 @@ class Standings:
 
 class Division:
     def __init__(self, data, wc=False):
-        def bruh(ids, ws, ts, ls, gb, seed, i):
+        def bruh(ids, ws, ts, ls, gb, seed, clincher, i):
             # print(i)
             # print(s)
-            return teams.TEAM_ID_ABBR[int(ids)], int(ws["value"]), int(ts["value"]), int(ls["value"]), gb["value"], seed["value"]
+            return teams.TEAM_ID_ABBR[int(ids)], int(ws["value"]), int(ts["value"]), int(ls["value"]), gb["value"], seed["value"], clincher["displayValue"]
 
         self.name = data[1]
         
         x = len(data[0][0])
         
-        tms = map(bruh, data[0][0], data[0][1], data[0][2], data[0][3], data[0][4], data[0][5], range(x))
+        print(data[0])
+        tms = map(bruh, data[0][0], data[0][1], data[0][2], data[0][3], data[0][4], data[0][5], data[0][6], range(x))
         self.teams = [Team(tm, wc) for tm in tms]
 
         # Fix GB for wild cards
         if "wild" in self.name.lower():
             teamz = self.teams
             seven = teamz[len(teamz) - (2 + 8)] # 7 out of 16
+            print("7", )
             eight = teamz[len(teamz) - (1 + 8)] # 8 out of 16
-            wins = eight.w - seven.w
+            wins = seven.w - eight.w
             losses = eight.l - seven.l
             gb = (wins + losses)/2
             teamz[len(teamz) - 9].gb = gb
 
-        print("GB2", self.teams[len(self.teams) - 1].gb)
+        # print("GB2", self.teams[len(self.teams) - 1].gb)
         # if wc:
         #     self.name = data["league"]["abbreviation"] + " Wild Card"
         # else:
@@ -169,10 +174,8 @@ class Team:
         #     self.gb = data["wildCardGamesBack"]
         # else:
         #     self.gb = data["gamesBack"]
-        self.clinched = False
-        self.elim = True
-        # TODO: self.clinched = data.get("clinched", False)
-        # TODO: self.elim = data.get("wildCardEliminationNumber", "") == "E"
+        self.clinched = data[6].lower() in ["x","y","z"]
+        self.elim = data[6].lower() == "e"
 
 NL_IDS = {'wc36': 'F_3', 'wc45': 'F_4', 'dsA': 'D_3', 'dsB': 'D_4', 'cs': 'L_2' }
 AL_IDS = {'wc36': 'F_1', 'wc45': 'F_2', 'dsA': 'D_1', 'dsB': 'D_2', 'cs': 'L_1' }
