@@ -105,7 +105,7 @@ class Standings:
         return False # TODO: self.date > self.playoffs_start_date
 
     def __standings_for(self, division_name):
-        print(division_name, self.standings[0].name)
+        # print(division_name, self.standings[0].name)
         return next(division for division in self.standings if division.name == division_name)
 
     def current_standings(self):
@@ -133,7 +133,7 @@ class Division:
         
         x = len(data[0][0])
         
-        print(data[0])
+        # print(data[0])
         tms = map(bruh, data[0][0], data[0][1], data[0][2], data[0][3], data[0][4], data[0][5], data[0][6], range(x))
         self.teams = [Team(tm, wc) for tm in tms]
 
@@ -141,7 +141,7 @@ class Division:
         if "wild" in self.name.lower():
             teamz = self.teams
             seven = teamz[len(teamz) - (2 + 8)] # 7 out of 16
-            print("7", )
+            # print("7", )
             eight = teamz[len(teamz) - (1 + 8)] # 8 out of 16
             wins = seven.w - eight.w
             losses = eight.l - seven.l
@@ -158,8 +158,8 @@ class Division:
 
 class Team:
     def __init__(self, data, wc):
-        print(len(data))
-        print(data)
+        # print(len(data))
+        # print(data)
         self.team_abbrev = data[0]
         self.w = data[1]
         self.t = data[2]

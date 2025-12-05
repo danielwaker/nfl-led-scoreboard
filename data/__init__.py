@@ -12,7 +12,7 @@ from data.scoreboard.pregame import Pregame
 from data.standings import Standings
 from data.update import UpdateStatus
 from data.weather import Weather
-
+from data.nflgame import NflData
 
 class Data:
     def __init__(self, config):
@@ -23,6 +23,8 @@ class Data:
         self.schedule: Schedule = Schedule(config)
         # NB: Can return none, but shouldn't matter?
         self.current_game: Game = self.schedule.get_preferred_game()
+
+        self.nfl_data: NflData = NflData(config)
 
         self.game_changed_time = time.time()
         if self.current_game is not None:
@@ -118,22 +120,24 @@ class Data:
             self.network_issues = True
 
     def get_screen_type(self) -> ScreenType:
-        # Always the news
-        if self.config.news_ticker_always_display:
-            return ScreenType.ALWAYS_NEWS
-        # Always the standings
-        if self.config.standings_always_display:
-            return ScreenType.ALWAYS_STANDINGS
-        # Full MLB Offday
-        if self.schedule.is_offday():
-            return ScreenType.LEAGUE_OFFDAY
+        # TEMP
+        # # Always the news
+        # if self.config.news_ticker_always_display:
+        #     return ScreenType.ALWAYS_NEWS
+        # # Always the standings
+        # if self.config.standings_always_display:
+        #     return ScreenType.ALWAYS_STANDINGS
+        # # Full MLB Offday
+        # if self.schedule.is_offday():
+        #     return ScreenType.LEAGUE_OFFDAY
 
-        # Preferred Team Offday
-        if self.schedule.is_offday_for_preferred_team() and (
-            self.config.news_ticker_team_offday or self.config.standings_team_offday
-        ):
-            return ScreenType.PREFERRED_TEAM_OFFDAY
+        # # Preferred Team Offday
+        # if self.schedule.is_offday_for_preferred_team() and (
+        #     self.config.news_ticker_team_offday or self.config.standings_team_offday
+        # ):
+        #     return ScreenType.PREFERRED_TEAM_OFFDAY
 
+        print("PLayball")
         # Playball!
         return ScreenType.GAMEDAY
 

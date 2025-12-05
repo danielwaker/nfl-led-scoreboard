@@ -114,8 +114,8 @@ class MainRenderer:
                 date_text = gamedatetime.strftime('%A %-d %b').upper()
             gametime = gamedatetime.strftime("%-I:%M %p")
             # Center the game time on screen.                
-            date_pos = center_text(self.font_mini.getsize(date_text)[0], 32)
-            gametime_pos = center_text(self.font_mini.getsize(gametime)[0], 32)
+            date_pos = center_text(self.font_mini.getbbox(date_text)[0], 32)
+            gametime_pos = center_text(self.font_mini.getbbox(gametime)[0], 32)
             # Draw the text on the Data image.
             self.draw.text((date_pos, 0), date_text, font=self.font_mini)
             self.draw.multiline_text((gametime_pos, 6), gametime, fill=(255, 255, 255), font=self.font_mini, align="center")
@@ -164,7 +164,7 @@ class MainRenderer:
             else:
                 gametime = ':'.join(str(gametime - time).split(':')[1:]).split('.')[:1][0]
             # Center the game time on screen.
-            gametime_pos = center_text(self.font_mini.getsize(gametime)[0], 32)
+            gametime_pos = center_text(self.font_mini.getbbox(gametime)[0], 32)
             # Draw the text on the Data image.
             self.draw.text((29, 0), 'IN', font=self.font_mini)
             self.draw.multiline_text((gametime_pos, 6), gametime, fill=(255, 255, 255), font=self.font_mini, align="center")
@@ -233,11 +233,11 @@ class MainRenderer:
         game_info = None
         if game['down']:
             down = re.sub(r"[a-z]+", "", game['down']).replace(" ", "")
-            info_pos = center_text(self.font_mini.getsize(str(down))[0], 32)
+            info_pos = center_text(self.font_mini.getbbox(str(down))[0], 32)
             self.draw.multiline_text((info_pos, 19), str(down), fill=(255, 255, 255), font=self.font_mini, align="center")
         if game['spot']:
             spot = game['spot'].replace(" ", "")
-            info_pos = center_text(self.font_mini.getsize(spot)[0], 32)
+            info_pos = center_text(self.font_mini.getbbox(spot)[0], 32)
             self.draw.multiline_text((info_pos, 25), spot, fill=(255, 255, 255), font=self.font_mini, align="center")
         pos_colour = (255, 255, 255)
         if game['redzone']:
@@ -245,13 +245,13 @@ class MainRenderer:
         # Set the position of the information on screen.
         homescore = '{0:02d}'.format(homescore)
         awayscore = '{0:02d}'.format(awayscore)
-        home_score_size = self.font.getsize(homescore)[0]
-        home_score_pos = center_text(self.font.getsize(homescore)[0], 16)
-        away_score_pos = center_text(self.font.getsize(awayscore)[0], 48)
-        time_period_pos = center_text(self.font_mini.getsize(time_period)[0], 32)
-        # score_position = center_text(self.font.getsize(score)[0], 32)
-        quarter_position = center_text(self.font_mini.getsize(quarter)[0], 32)
-        info_pos = center_text(self.font_mini.getsize(pos)[0], 32)
+        home_score_size = self.font.getbbox(homescore)[0]
+        home_score_pos = center_text(self.font.getbbox(homescore)[0], 16)
+        away_score_pos = center_text(self.font.getbbox(awayscore)[0], 48)
+        time_period_pos = center_text(self.font_mini.getbbox(time_period)[0], 32)
+        # score_position = center_text(self.font.getbbox(score)[0], 32)
+        quarter_position = center_text(self.font_mini.getbbox(quarter)[0], 32)
+        info_pos = center_text(self.font_mini.getbbox(pos)[0], 32)
         self.draw.multiline_text((info_pos, 13), pos, fill=pos_colour, font=self.font_mini, align="center")
         self.draw.multiline_text((quarter_position, 0), quarter, fill=(255, 255, 255), font=self.font_mini, align="center")
         self.draw.multiline_text((time_period_pos, 6), time_period, fill=(255, 255, 255), font=self.font_mini, align="center")
@@ -308,7 +308,7 @@ class MainRenderer:
         # Prepare the data
         score = '{}-{}'.format(game['awayscore'], game['homescore'])
         # Set the position of the information on screen.
-        score_position = center_text(self.font.getsize(score)[0], 32)
+        score_position = center_text(self.font.getbbox(score)[0], 32)
         # Draw the text on the Data image.
         self.draw.multiline_text((score_position, 19), score, fill=(255, 255, 255), font=self.font, align="center")
         self.draw.multiline_text((26, 0), "END", fill=(255, 255, 255), font=self.font_mini,align="center")

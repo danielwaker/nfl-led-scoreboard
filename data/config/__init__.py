@@ -71,6 +71,9 @@ class Config:
         self.preferred_game_delay_multiplier = json["preferred_game_delay_multiplier"]
         self.api_refresh_rate = json["api_refresh_rate"]
 
+        # NFL
+        self.helmet_logos = json["use_helmet_logos"]
+
         self.debug = json["debug"]
         self.demo_date = json["demo_date"]
         # Make sure the scrolling speed setting is in range so we don't crash
