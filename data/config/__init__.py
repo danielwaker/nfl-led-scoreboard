@@ -16,8 +16,8 @@ DEFAULT_SCROLLING_SPEED = 2
 DEFAULT_ROTATE_RATE = 15.0
 MINIMUM_ROTATE_RATE = 2.0
 DEFAULT_ROTATE_RATES = {"live": DEFAULT_ROTATE_RATE, "final": DEFAULT_ROTATE_RATE, "pregame": DEFAULT_ROTATE_RATE}
-DEFAULT_PREFERRED_TEAMS = ["Cubs"]
-DEFAULT_PREFERRED_DIVISIONS = ["NL Central"]
+DEFAULT_PREFERRED_TEAMS = ["GB"]
+DEFAULT_PREFERRED_DIVISIONS = ["NFC_NORTH"]
 
 
 class Config:
@@ -52,10 +52,10 @@ class Config:
         self.rotation_only_preferred = json["rotation"]["only_preferred"]
         self.rotation_only_live = json["rotation"]["only_live"]
         self.rotation_rates = json["rotation"]["rates"]
-        self.rotation_preferred_team_live_enabled = json["rotation"]["while_preferred_team_live"]["enabled"]
-        self.rotation_preferred_team_live_mid_inning = json["rotation"]["while_preferred_team_live"][
-            "during_inning_breaks"
-        ]
+        # self.rotation_preferred_team_live_enabled = json["rotation"]["while_preferred_team_live"]["enabled"]
+        # self.rotation_preferred_team_live_mid_inning = json["rotation"]["while_preferred_team_live"][
+        #     "during_inning_breaks"
+        # ]
 
         # Weather
         self.weather_apikey = json["weather"]["apikey"]
@@ -73,6 +73,7 @@ class Config:
 
         # NFL
         self.helmet_logos = json["use_helmet_logos"]
+        self.rotation_preferred_team_live_enabled = json["rotation"]["while_preferred_team_live"]["enabled"]
 
         self.debug = json["debug"]
         self.demo_date = json["demo_date"]
