@@ -14,6 +14,8 @@ from utils import deep_update
 SCROLLING_SPEEDS = [0.3, 0.2, 0.1, 0.075, 0.05, 0.025, 0.01]
 DEFAULT_SCROLLING_SPEED = 2
 DEFAULT_ROTATE_RATE = 15.0
+DEFAULT_API_REFRESH_RATE = 15.0
+MINIMUM_API_REFRESH_RATE = 2.0
 MINIMUM_ROTATE_RATE = 2.0
 DEFAULT_ROTATE_RATES = {"live": DEFAULT_ROTATE_RATE, "final": DEFAULT_ROTATE_RATE, "pregame": DEFAULT_ROTATE_RATE}
 DEFAULT_PREFERRED_TEAMS = ["GB"]
@@ -69,11 +71,12 @@ class Config:
         self.short_team_names_for_runs_hits = json["short_team_names_for_runs_hits"]
         self.pregame_weather = json["pregame_weather"]
         self.preferred_game_delay_multiplier = json["preferred_game_delay_multiplier"]
-        self.api_refresh_rate = json["api_refresh_rate"]
+        # self.api_refresh_rate = json["api_refresh_rate"]
 
         # NFL
         self.helmet_logos = json["use_helmet_logos"]
         self.rotation_preferred_team_live_enabled = json["rotation"]["while_preferred_team_live"]["enabled"]
+        self.api_refresh_rate = json["api_refresh_rate"]
 
         self.debug = json["debug"]
         self.demo_date = json["demo_date"]
@@ -136,9 +139,15 @@ class Config:
     def check_api_refresh_rate(self):
         if self.api_refresh_rate < 3:
             debug.warning(
-                "api_refresh_rate should be a positive integer greater than 2. Using default value of 10"
+                "api_refresh_rate should be a positive integer greater than {}. Using default value of {}"
+            ).format(MINIMUM_API_REFRESH_RATE, DEFAULT_API_REFRESH_RATE)
+            self.api_refresh_rate = DEFAULT_API_REFRESH_RATE
+        if self.api_refresh_rate < DEFAULT_API_REFRESH_RATE:
+            debug.warning(
+                'rotate_rates["{}"] is low. The default rate of {} allows for continuous running for about 10 hours. Running at lower rates risks rate limiting.'.format(
+                    self.api_refresh_rate, DEFAULT_API_REFRESH_RATE
+                )
             )
-            self.api_refresh_rate = 10
         if self.api_refresh_rate != int(self.api_refresh_rate):
             debug.warning(
                 "api_refresh_rate should be an integer."

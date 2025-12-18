@@ -48,6 +48,10 @@ class NflData:
             # print(attempts_remaining)
             try:
                 all_games = nflparser.get_all_games(self.demo_week)
+
+                # TODO: 12/18/25 Continue to monitor if this fixes the refresh rate...
+                self.needs_refresh = False
+
                 if self.config.rotation_only_preferred:
                     self.games = self.__filter_list_of_games(all_games, self.config.preferred_teams)
                 # if rotation is disabled, only look at the first team in the list of preferred teams

@@ -73,6 +73,7 @@ def get_standings(
     return team_ids, wins, ties, losses, gamesBehind, playoffSeed, clincher
 
 def get_all_games(week):
+    print("ESPN API CALL")
     # for i in range(5):
     try:
         res = requests.get(SCOREBOARD_URL+'?week='+week)

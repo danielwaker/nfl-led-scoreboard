@@ -22,7 +22,6 @@ from rgbmatrix import graphics
 import re
 from utils import center_text
 import time as t
-GAMES_REFRESH_RATE = 900.0
 
 # TODO(BMW) make configurable time?
 STANDINGS_NEWS_SWITCH_TIME = 120
@@ -76,6 +75,7 @@ class MainRenderer:
         # Playball!
         else:
             self.starttime = t.time()
+            self.starttime_api = t.time()
             self.__render_game()
 
     def __render_offday(self, team_offday=True) -> NoReturn:
@@ -307,6 +307,7 @@ class MainRenderer:
         while True:
             # If we need to refresh the overview data, do that
             if self.data.nfl_data.needs_refresh:
+                # print("yes")
                 self.data.nfl_data.refresh_games()
 
             # Draw the current game
@@ -317,27 +318,54 @@ class MainRenderer:
             t.sleep(refresh_rate)
             endtime = t.time()
             time_delta = endtime - self.starttime
+            time_delta_api = endtime - self.starttime_api
             rotate_rate = self.__rotate_rate_for_game(self.data.nfl_data.current_game())
 
             # If we're ready to rotate, let's do it
             # fix this u idiot
-            if time_delta >= rotate_rate:
-                self.starttime = t.time()
+            # TODO: lol ^ make it so that rotate rate is not dependent on API rate being lower
+            if time_delta_api >= self.data.config.api_refresh_rate: # rotate_rate:
+                self.starttime_api = t.time()
                 self.data.nfl_data.needs_refresh = True
 
                 print(time_delta, rotate_rate)
 
                 print(self.__should_rotate_to_next_game(self.data.nfl_data.current_game()))
-                print(endtime - self.data.nfl_data.games_refresh_time >= GAMES_REFRESH_RATE)
+                print(endtime - self.data.nfl_data.games_refresh_time >= self.data.config.api_refresh_rate, endtime - self.data.nfl_data.games_refresh_time, self.data.config.api_refresh_rate)
+                print(self.data.nfl_data.needs_refresh)
 
-                if self.__should_rotate_to_next_game(self.data.nfl_data.current_game()):
-                    game = self.data.nfl_data.advance_to_next_game()
+                if time_delta >= rotate_rate:
+                    self.starttime = t.time()
+                    if self.__should_rotate_to_next_game(self.data.nfl_data.current_game()):
+                        game = self.data.nfl_data.advance_to_next_game()
 
-                if endtime - self.data.nfl_data.games_refresh_time >= GAMES_REFRESH_RATE:
+                if endtime - self.data.nfl_data.games_refresh_time >= self.data.config.api_refresh_rate:
                     self.data.nfl_data.refresh_games()
 
                 if self.data.nfl_data.needs_refresh:
                     self.data.nfl_data.refresh_games()
+
+            # if time_delta >= rotate_rate:
+            #     self.starttime = t.time()
+            #     self.data.nfl_data.needs_refresh = True
+
+            #     refresh = self.data.config.api_refresh_rate * 1000
+            #     print(time_delta, rotate_rate)
+
+            #     print(self.__should_rotate_to_next_game(self.data.nfl_data.current_game()))
+            #     print(endtime - self.data.nfl_data.games_refresh_time >= refresh)
+            #     print(self.data.nfl_data.needs_refresh)
+
+            #     if self.__should_rotate_to_next_game(self.data.nfl_data.current_game()):
+            #         game = self.data.nfl_data.advance_to_next_game()
+
+
+
+            #     if endtime - self.data.nfl_data.games_refresh_time >= refresh:
+            #         self.data.nfl_data.refresh_games()
+
+            #     if self.data.nfl_data.needs_refresh:
+            #         self.data.nfl_data.refresh_games()
 
     def __rotate_rate_for_game(self, game):
         rotate_rate = self.data.nfl_data.config.rotation_rates_live
@@ -361,15 +389,12 @@ class MainRenderer:
 
         # Rotate IF there are no preferred teams
         # OR if rotation is enabled for preferred team
-        # OR if game over
+        # OR if preferred team isn't live
         stay_on_preferred_team = (self.data.nfl_data.config.preferred_teams 
                                   and not self.data.nfl_data.config.rotation_preferred_team_live_enabled
                                   and not game['over']
                                   and not game['state'] == 'pre')
-        if stay_on_preferred_team == False:
-            return True
-        else:
-            return False
+        return not stay_on_preferred_team
 
         # figure this out later heh
         # showing_preferred_team = self.data.nfl_data.config.preferred_teams[0] in [game.awayteam, game.hometeam]
