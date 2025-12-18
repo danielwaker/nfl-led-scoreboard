@@ -77,6 +77,7 @@ class Config:
 
         self.debug = json["debug"]
         self.demo_date = json["demo_date"]
+        self.demo_week = json["demo_week"]
         # Make sure the scrolling speed setting is in range so we don't crash
         try:
             self.scrolling_speed = SCROLLING_SPEEDS[json["scrolling_speed"]]

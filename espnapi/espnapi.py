@@ -72,10 +72,10 @@ def get_standings(
     # print(test)
     return team_ids, wins, ties, losses, gamesBehind, playoffSeed, clincher
 
-def get_all_games():
+def get_all_games(week):
     # for i in range(5):
     try:
-        res = requests.get(SCOREBOARD_URL)
+        res = requests.get(SCOREBOARD_URL+'?week='+week)
         res = res.json()
         games = []
         # i = 0
@@ -89,6 +89,7 @@ def get_all_games():
                     'redzone': info.get('situation', {}).get('isRedZone'), 'possession': info.get('situation', {}).get('possession'), 'state': info['status']['type']['state']}
             games.append(game)
             # i += 1
+        # print("games", len(games))
         return games
     except requests.exceptions.RequestException as e:
         print("Error encountered getting game info, can't hit ESPN api, retrying")

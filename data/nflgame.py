@@ -14,6 +14,9 @@ class NflData:
         self.needs_refresh = True
 
         self.helmet_logos = self.config.helmet_logos
+        self.debug = self.config.debug
+        self.demo_date = self.config.demo_date
+        self.demo_week = self.config.demo_week if self.debug else ""
         
         # Parse today's date and see if we should use today or yesterday
         self.get_current_date()
@@ -31,7 +34,9 @@ class NflData:
         # self.scores = {}
 
     def get_current_date(self):
-        return datetime.utcnow()
+        # print(self.demo_date)
+        # print(datetime.fromisoformat(self.demo_date))
+        return datetime.utcnow() if not self.demo_date else datetime.fromisoformat(self.demo_date)
     
     def refresh_game(self):
         self.game = self.choose_game()
@@ -40,8 +45,9 @@ class NflData:
     def refresh_games(self):
         attempts_remaining = 5
         while attempts_remaining > 0:
+            # print(attempts_remaining)
             try:
-                all_games = nflparser.get_all_games()
+                all_games = nflparser.get_all_games(self.demo_week)
                 if self.config.rotation_only_preferred:
                     self.games = self.__filter_list_of_games(all_games, self.config.preferred_teams)
                 # if rotation is disabled, only look at the first team in the list of preferred teams
@@ -124,6 +130,9 @@ class NflData:
     #         return 0
 
     def __filter_list_of_games(self, games, teams):
+        # gamez = list(game for game in games if set([game['awayteam'], game['hometeam']]).intersection(set(teams)))
+        # print("bello")
+        # print(game for game in gamez)
         return list(game for game in games if set([game['awayteam'], game['hometeam']]).intersection(set(teams)))
 
     # def __game_index_for(self, team_name):

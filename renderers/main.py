@@ -2,6 +2,7 @@ import time
 from typing import Callable, NoReturn
 from data.screens import ScreenType
 
+from data.teams import TEAM_ID_NAME
 import debug
 from data import Data, status
 from data.scoreboard import Scoreboard
@@ -324,6 +325,11 @@ class MainRenderer:
                 self.starttime = t.time()
                 self.data.nfl_data.needs_refresh = True
 
+                print(time_delta, rotate_rate)
+
+                print(self.__should_rotate_to_next_game(self.data.nfl_data.current_game()))
+                print(endtime - self.data.nfl_data.games_refresh_time >= GAMES_REFRESH_RATE)
+
                 if self.__should_rotate_to_next_game(self.data.nfl_data.current_game()):
                     game = self.data.nfl_data.advance_to_next_game()
 
@@ -346,8 +352,20 @@ class MainRenderer:
         # print(self.data.nfl_data.config.rotation_enabled, self.data.nfl_data.config.preferred_teams and not self.data.nfl_data.config.rotation_preferred_team_live_enabled)
         if self.data.nfl_data.config.rotation_enabled == False:
             return False
+        
+        # Rotate IF the current game doesn't include a preferred team
+        # print(TEAM_ID_NAME[int(game['homeid'])], TEAM_ID_NAME[int(game['awayid'])], )
+        if (TEAM_ID_NAME[int(game['homeid'])] not in self.data.nfl_data.config.preferred_teams
+            and TEAM_ID_NAME[int(game['awayid'])] not in self.data.nfl_data.config.preferred_teams):
+            return True
 
-        stay_on_preferred_team = self.data.nfl_data.config.preferred_teams and not self.data.nfl_data.config.rotation_preferred_team_live_enabled
+        # Rotate IF there are no preferred teams
+        # OR if rotation is enabled for preferred team
+        # OR if game over
+        stay_on_preferred_team = (self.data.nfl_data.config.preferred_teams 
+                                  and not self.data.nfl_data.config.rotation_preferred_team_live_enabled
+                                  and not game['over']
+                                  and not game['state'] == 'pre')
         if stay_on_preferred_team == False:
             return True
         else:
