@@ -1,7 +1,7 @@
 {
 	"preferred": {
-		"teams": ["Cubs"],
-		"divisions": ["NL Central", "NL Wild Card"]
+		"teams": ["Packers"],
+		"divisions": ["NFC_NORTH"]
 	},
 	"news_ticker": {
 		"team_offday": true,
@@ -26,14 +26,15 @@
 		"only_preferred": false,
 		"only_live": true,
 		"rates": {
-			"live": 15.0,
+			"live": 10.0,
 			"final": 15.0,
-			"pregame": 15.0
+			"pregame": 15.0,
+			"half": 5.0
 		},
 		"while_preferred_team_live": {
-			"enabled": false,
-			"during_inning_breaks": false
-		}
+			"enabled": false
+		},
+		"only_live_teams": true
 	},
 	"weather": {
 		"apikey": "YOUR_API_KEY_HERE",
@@ -45,9 +46,11 @@
 	"full_team_names": true,
 	"short_team_names_for_runs_hits": true,
 	"preferred_game_delay_multiplier": 0,
-	"api_refresh_rate" : 5,
+	"api_refresh_rate" : 15,
 	"pregame_weather": true,
 	"scrolling_speed": 2,
 	"debug": false,
-	"demo_date": false
+	"demo_date": "2025-12-14",
+	"demo_week": "1",
+    "use_helmet_logos": true
 }
