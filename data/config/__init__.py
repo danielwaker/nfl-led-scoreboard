@@ -17,7 +17,7 @@ DEFAULT_ROTATE_RATE = 15.0
 DEFAULT_API_REFRESH_RATE = 15.0
 MINIMUM_API_REFRESH_RATE = 2.0
 MINIMUM_ROTATE_RATE = 2.0
-DEFAULT_ROTATE_RATES = {"live": DEFAULT_ROTATE_RATE, "final": DEFAULT_ROTATE_RATE, "pregame": DEFAULT_ROTATE_RATE}
+DEFAULT_ROTATE_RATES = {"live": DEFAULT_ROTATE_RATE, "final": DEFAULT_ROTATE_RATE, "pregame": DEFAULT_ROTATE_RATE, "half": DEFAULT_ROTATE_RATE}
 DEFAULT_PREFERRED_TEAMS = ["GB"]
 DEFAULT_PREFERRED_DIVISIONS = ["NFC_NORTH"]
 
@@ -77,6 +77,7 @@ class Config:
         self.helmet_logos = json["use_helmet_logos"]
         self.rotation_preferred_team_live_enabled = json["rotation"]["while_preferred_team_live"]["enabled"]
         self.api_refresh_rate = json["api_refresh_rate"]
+        self.only_live_teams = json["rotation"]["only_live_teams"] # if at least one team is live, show only live teams
 
         self.debug = json["debug"]
         self.demo_date = json["demo_date"]
@@ -199,14 +200,16 @@ class Config:
         self.rotation_rates_live = self.rotation_rates.get("live", DEFAULT_ROTATE_RATES["live"])
         self.rotation_rates_final = self.rotation_rates.get("final", DEFAULT_ROTATE_RATES["final"])
         self.rotation_rates_pregame = self.rotation_rates.get("pregame", DEFAULT_ROTATE_RATES["pregame"])
+        self.rotation_rates_half = self.rotation_rates.get("half", DEFAULT_ROTATE_RATES["half"])
 
-    def rotate_rate_for_status(self, game_status):
-        rotate_rate = self.rotation_rates_live
-        if status.is_pregame(game_status):
-            rotate_rate = self.rotation_rates_pregame
-        if status.is_complete(game_status):
-            rotate_rate = self.rotation_rates_final
-        return rotate_rate
+
+    # def rotate_rate_for_status(self, game_status):
+    #     rotate_rate = self.rotation_rates_live
+    #     if status.is_pregame(game_status):
+    #         rotate_rate = self.rotation_rates_pregame
+    #     if status.is_complete(game_status):
+    #         rotate_rate = self.rotation_rates_final
+    #     return rotate_rate
 
     def parse_today(self):
         if self.demo_date:

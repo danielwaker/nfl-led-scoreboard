@@ -17,9 +17,15 @@ class NflData:
         self.debug = self.config.debug
         self.demo_date = self.config.demo_date
         self.demo_week = self.config.demo_week if self.debug else ""
+        self.only_live_teams = self.config.only_live_teams
         
         # Parse today's date and see if we should use today or yesterday
         self.get_current_date()
+
+
+        # TODO: 12/21/2025 monitor set games to empty to start
+        self.games = []
+
         # Fetch the teams info
         self.refresh_games()
 
@@ -58,7 +64,7 @@ class NflData:
                 elif not self.config.rotation_enabled:
                     self.games = self.__filter_list_of_games(all_games, [self.config.preferred_teams[0]])
                 else:
-                    self.games = all_games
+                    self.games = self.__filter_list_of_games(all_games, None)
 
                 self.games_refresh_time = t.time()
                 self.network_issues = False
@@ -135,9 +141,23 @@ class NflData:
 
     def __filter_list_of_games(self, games, teams):
         # gamez = list(game for game in games if set([game['awayteam'], game['hometeam']]).intersection(set(teams)))
-        # print("bello")
+        print("bello")
         # print(game for game in gamez)
-        return list(game for game in games if set([game['awayteam'], game['hometeam']]).intersection(set(teams)))
+
+        if self.config.only_live_teams:
+            game_list = list(game for game in games if game['state'] == 'in' and (game['timeout'] not in ["EH", "Off TO"])) # end half or official timeout
+        if teams is not None and len(game_list) > 0:
+            game_list = list(game for game in games if set([game['awayteam'], game['hometeam']]).intersection(set(teams)))
+        if len(game_list) == 0:
+            game_list = games
+
+        # TODO: 12/21/25 monitor current game index reset
+        if len(game_list) < len(self.games) and self.current_game_index != 0:
+            self.current_game_index += len(game_list) - len(self.games)
+
+        print(len(game_list))
+        print(len(self.games))
+        return game_list
 
     # def __game_index_for(self, team_name):
     #     team_index = 0

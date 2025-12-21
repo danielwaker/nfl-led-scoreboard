@@ -323,27 +323,30 @@ class MainRenderer:
 
             # If we're ready to rotate, let's do it
             # fix this u idiot
-            # TODO: lol ^ make it so that rotate rate is not dependent on API rate being lower
+
+            # TODO: lol ^ 12/21/25 monitor separate API refresh and rotation
             if time_delta_api >= self.data.config.api_refresh_rate: # rotate_rate:
                 self.starttime_api = t.time()
                 self.data.nfl_data.needs_refresh = True
 
-                print(time_delta, rotate_rate)
+                print(time_delta_api, self.data.config.api_refresh_rate)
 
-                print(self.__should_rotate_to_next_game(self.data.nfl_data.current_game()))
-                print(endtime - self.data.nfl_data.games_refresh_time >= self.data.config.api_refresh_rate, endtime - self.data.nfl_data.games_refresh_time, self.data.config.api_refresh_rate)
-                print(self.data.nfl_data.needs_refresh)
-
-                if time_delta >= rotate_rate:
-                    self.starttime = t.time()
-                    if self.__should_rotate_to_next_game(self.data.nfl_data.current_game()):
-                        game = self.data.nfl_data.advance_to_next_game()
+                # print(self.__should_rotate_to_next_game(self.data.nfl_data.current_game()))
+                # print(endtime - self.data.nfl_data.games_refresh_time >= self.data.config.api_refresh_rate, endtime - self.data.nfl_data.games_refresh_time, self.data.config.api_refresh_rate)
+                # print(self.data.nfl_data.needs_refresh)
 
                 if endtime - self.data.nfl_data.games_refresh_time >= self.data.config.api_refresh_rate:
                     self.data.nfl_data.refresh_games()
 
                 if self.data.nfl_data.needs_refresh:
                     self.data.nfl_data.refresh_games()
+
+            if time_delta >= rotate_rate:
+                print(time_delta, rotate_rate)
+
+                self.starttime = t.time()
+                if self.__should_rotate_to_next_game(self.data.nfl_data.current_game()):
+                    game = self.data.nfl_data.advance_to_next_game()
 
             # if time_delta >= rotate_rate:
             #     self.starttime = t.time()
@@ -373,6 +376,8 @@ class MainRenderer:
             rotate_rate = self.data.nfl_data.config.rotation_rates_pregame
         if game['state'] == 'post':
             rotate_rate = self.data.nfl_data.config.rotation_rates_final
+        if game['timeout'] == 'EH':
+            rotate_rate = self.data.nfl_data.config.rotation_rates_half
         return rotate_rate
 
     def __should_rotate_to_next_game(self, game):
@@ -523,7 +528,7 @@ class MainRenderer:
     def _draw_live_game(self, game):
         homescore = game['homescore']
         awayscore = game['awayscore']
-        print("home: ", homescore, "away: ", awayscore)
+        # print("home: ", homescore, "away: ", awayscore)
         # Refresh the data
         if self.data.nfl_data.needs_refresh:
             debug.info('Refresh game overview')
@@ -619,7 +624,9 @@ class MainRenderer:
         # Save the scores.
         # awayscore = game['awayscore']
         # homescore = game['homescore']
-        self.data.nfl_data.needs_refresh = True
+
+        # TODO: 12/18/25 Monitor this fix
+        # self.data.nfl_data.needs_refresh = True
 
     def _draw_post_game(self, game):
         # Prepare the data
