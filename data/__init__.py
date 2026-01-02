@@ -1,3 +1,4 @@
+from datetime import datetime
 import time
 from data.screens import ScreenType
 
@@ -127,9 +128,14 @@ class Data:
         # # Always the standings
         # if self.config.standings_always_display:
         #     return ScreenType.ALWAYS_STANDINGS
-        # # Full MLB Offday
+        # Full MLB Offday
         # if self.schedule.is_offday():
         #     return ScreenType.LEAGUE_OFFDAY
+
+        # Full NFL Offday
+        if (len(self.nfl_data.games) == 0 or
+            not any(datetime.strptime(game['date'], "%Y-%m-%dT%H:%MZ").day == self.nfl_data.get_current_date().day for game in self.nfl_data.games)):
+            return ScreenType.LEAGUE_OFFDAY
 
         # # Preferred Team Offday
         # if self.schedule.is_offday_for_preferred_team() and (

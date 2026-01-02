@@ -69,7 +69,7 @@ class MainRenderer:
         elif screen == ScreenType.ALWAYS_STANDINGS:
             self.__render_standings()
         elif screen == ScreenType.LEAGUE_OFFDAY:
-            True # TODO: self.__render_offday(team_offday=False)
+            self.__render_offday(team_offday=False)
         elif screen == ScreenType.PREFERRED_TEAM_OFFDAY:
             True # TODO: self.__render_offday(team_offday=True)
         # Playball!
@@ -79,11 +79,15 @@ class MainRenderer:
             self.__render_game()
 
     def __render_offday(self, team_offday=True) -> NoReturn:
+
+        news = False # TODO: remove this
+        
         if team_offday:
-            news = self.data.config.news_ticker_team_offday
-            standings = self.data.config.standings_team_offday
+            True # TODO
+            # news = self.data.config.news_ticker_team_offday
+            # standings = self.data.config.standings_team_offday
         else:
-            news = True
+            # TODO: news = True
             standings = self.data.config.standings_mlb_offday
 
         if news and standings:
@@ -93,14 +97,19 @@ class MainRenderer:
         elif news:
             self.__draw_news(permanent_cond)
         else:
-            self.__render_standings()
+            # self.__render_standings()
+            while True:
+                self.__render_standings()
+                self.starttime = t.time()
+                self.starttime_api = t.time()
+                self.__render_game(False)
 
     def __render_standings(self) -> NoReturn:
         self.__draw_standings(permanent_cond)
 
         # Out of season off days don't always return standings so fall back on the news renderer
-        debug.error("No standings data.  Falling back to news.")
-        self.__draw_news(permanent_cond)
+        # debug.error("No standings data.  Falling back to news.")
+        # TODO some sort of fallback: self.__draw_news(permanent_cond)
 
     # Renders a game screen based on it's status
     # May also call draw_offday or draw_standings if there are no games
@@ -245,6 +254,8 @@ class MainRenderer:
 
         update = 1
         while cond():
+            standings_index = self.data.standings.current_division_index
+
             if self.data.standings.is_postseason():
                 standings.render_bracket(
                     self.canvas,
@@ -280,6 +291,9 @@ class MainRenderer:
                     self.data.standings.advance_to_next_standings()
             elif self.canvas.width > 32 and update % 10 == 0:
                 self.data.standings.advance_to_next_standings()
+            
+            if standings_index != 0 and self.data.standings.current_division_index == 0:
+                break
 
             time.sleep(1)
             update = (update + 1) % 100
@@ -303,8 +317,10 @@ class MainRenderer:
         return not self.data.schedule.games_live()
 
     # NFL
-    def __render_game(self):
+    def __render_game(self, gameday):
         while True:
+            game_index = self.data.nfl_data.current_game_index
+
             # If we need to refresh the overview data, do that
             if self.data.nfl_data.needs_refresh:
                 # print("yes")
@@ -347,6 +363,9 @@ class MainRenderer:
                 self.starttime = t.time()
                 if self.__should_rotate_to_next_game(self.data.nfl_data.current_game()):
                     game = self.data.nfl_data.advance_to_next_game()
+            
+            if not gameday and self.data.nfl_data.current_game_index == 0 and game_index != 0:
+                break
 
             # if time_delta >= rotate_rate:
             #     self.starttime = t.time()

@@ -1,7 +1,7 @@
 {
 	"preferred": {
 		"teams": ["Packers"],
-		"divisions": ["NFC_NORTH"]
+		"divisions": ["NFC_NORTH","NFC_WILD_CARD","AFC_WILD_CARD"]
 	},
 	"news_ticker": {
 		"team_offday": true,
@@ -27,14 +27,15 @@
 		"only_live": true,
 		"rates": {
 			"live": 10.0,
-			"final": 15.0,
-			"pregame": 15.0,
+			"final": 5.0,
+			"pregame": 5.0,
 			"half": 5.0
 		},
 		"while_preferred_team_live": {
 			"enabled": false
 		},
-		"only_live_teams": true
+		"only_live_teams": true,
+		"jump_to_score": true
 	},
 	"weather": {
 		"apikey": "YOUR_API_KEY_HERE",

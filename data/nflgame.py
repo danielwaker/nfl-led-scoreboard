@@ -25,6 +25,7 @@ class NflData:
 
         # TODO: 12/21/2025 monitor set games to empty to start
         self.games = []
+        self.last_games = []
 
         # Fetch the teams info
         self.refresh_games()
@@ -58,6 +59,8 @@ class NflData:
                 # TODO: 12/18/25 Continue to monitor if this fixes the refresh rate...
                 self.needs_refresh = False
 
+                if len(self.games) > 0:
+                    self.last_games = self.games
                 if self.config.rotation_only_preferred:
                     self.games = self.__filter_list_of_games(all_games, self.config.preferred_teams)
                 # if rotation is disabled, only look at the first team in the list of preferred teams

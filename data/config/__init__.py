@@ -78,6 +78,7 @@ class Config:
         self.rotation_preferred_team_live_enabled = json["rotation"]["while_preferred_team_live"]["enabled"]
         self.api_refresh_rate = json["api_refresh_rate"]
         self.only_live_teams = json["rotation"]["only_live_teams"] # if at least one team is live, show only live teams
+        self.jump_to_score = json["rotation"]["jump_to_score"] # if a team scores on API refresh, rotate directly to that game
 
         self.debug = json["debug"]
         self.demo_date = json["demo_date"]
