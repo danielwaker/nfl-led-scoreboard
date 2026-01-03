@@ -43,7 +43,7 @@ class NflData:
     def get_current_date(self):
         # print(self.demo_date)
         # print(datetime.fromisoformat(self.demo_date))
-        return datetime.utcnow() if not self.demo_date else datetime.fromisoformat(self.demo_date)
+        return datetime.utcnow() if not (self.demo_date and self.debug) else datetime.fromisoformat(self.demo_date)
     
     def refresh_game(self):
         self.game = self.choose_game()
@@ -155,8 +155,10 @@ class NflData:
             game_list = games
 
         # TODO: 12/21/25 monitor current game index reset
-        if len(game_list) < len(self.games) and self.current_game_index != 0:
+        if len(game_list) < len(self.games):
             self.current_game_index += len(game_list) - len(self.games)
+            if self.current_game_index < 0:
+                self.current_game_index = 0
 
         print(len(game_list))
         print(len(self.games))

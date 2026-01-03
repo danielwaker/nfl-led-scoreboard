@@ -317,7 +317,7 @@ class MainRenderer:
         return not self.data.schedule.games_live()
 
     # NFL
-    def __render_game(self, gameday):
+    def __render_game(self, gameday=True):
         while True:
             game_index = self.data.nfl_data.current_game_index
 
