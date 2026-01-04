@@ -98,7 +98,9 @@ class NflData:
         return self.games[self.current_game_index]
     
     def current_game_old(self):
-        return self.last_games[self.current_game_index]
+        current_game_old = self.last_games[self.current_game_index]
+        self.last_games[self.current_game_index] = None
+        return current_game_old
 
     # def update_scores(self, homescore, awayscore):
     #     self.scores[self.current_game_index] = {'home': homescore, 'away': awayscore}

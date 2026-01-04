@@ -326,7 +326,11 @@ class MainRenderer:
                 # print("yes")
                 self.data.nfl_data.refresh_games()
 
-            last_game = self.data.nfl_data.current_game_old() if len(self.data.nfl_data.last_games) > 0 and len(self.data.nfl_data.games) == len(self.data.nfl_data.last_games) else None
+            if len(self.data.nfl_data.last_games) > 0 and len(self.data.nfl_data.games) == len(self.data.nfl_data.last_games):
+                last_game = self.data.nfl_data.current_game_old()
+                # self.data.nfl_data.last_games[self.data.nfl_data.current_game_index] = None
+            else:
+                last_game = None
 
             # Draw the current game
             self.__draw_game(self.data.nfl_data.current_game(), last_game)
@@ -547,15 +551,17 @@ class MainRenderer:
             # t.sleep(1)
 
     def _draw_live_game(self, game, last_game):
+        # yes = False
         if last_game == None:
+            # yes = True
             last_game = game
         homescore = last_game['homescore']
         awayscore = last_game['awayscore']
         yardLine = last_game['yardLine']
 
         # print(f"Yardline {yardLine}")
-        # if yardLine != game['yardLine']:
-        #     print(f"YARDS GAINED: {game['yardLine'] - yardLine}")
+        if yardLine != game['yardLine']:
+            print(f"YARDS GAINED: {game['yardLine'] - yardLine}")
 
         # print("home: ", homescore, "away: ", awayscore)
         # Refresh the data
@@ -566,9 +572,11 @@ class MainRenderer:
         # Use this code if you want the animations to run
         if game['homescore'] > homescore + 5 or game['awayscore'] > awayscore + 5:
             debug.info('should draw TD')
+            print('should draw TD')
             self._draw_td()
         elif game['homescore'] > homescore + 2 or game['awayscore'] > awayscore + 2:
             debug.info('should draw FG')
+            print('should draw FG')
             self._draw_fg()
         # Prepare the data
         # score = '{}-{}'.format(overview['awayscore'], overview['homescore'])
