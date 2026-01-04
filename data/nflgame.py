@@ -43,7 +43,7 @@ class NflData:
     def get_current_date(self):
         # print(self.demo_date)
         # print(datetime.fromisoformat(self.demo_date))
-        return datetime.utcnow() if not (self.demo_date and self.debug) else datetime.fromisoformat(self.demo_date)
+        return datetime.now() if not (self.demo_date and self.debug) else datetime.fromisoformat(self.demo_date)
     
     def refresh_game(self):
         self.game = self.choose_game()
@@ -60,7 +60,7 @@ class NflData:
                 self.needs_refresh = False
 
                 if len(self.games) > 0:
-                    self.last_games = self.games
+                    self.last_games = self.games.copy()
                 if self.config.rotation_only_preferred:
                     self.games = self.__filter_list_of_games(all_games, self.config.preferred_teams)
                 # if rotation is disabled, only look at the first team in the list of preferred teams
@@ -96,6 +96,9 @@ class NflData:
 
     def current_game(self):
         return self.games[self.current_game_index]
+    
+    def current_game_old(self):
+        return self.last_games[self.current_game_index]
 
     # def update_scores(self, homescore, awayscore):
     #     self.scores[self.current_game_index] = {'home': homescore, 'away': awayscore}

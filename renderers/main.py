@@ -326,8 +326,10 @@ class MainRenderer:
                 # print("yes")
                 self.data.nfl_data.refresh_games()
 
+            last_game = self.data.nfl_data.current_game_old() if len(self.data.nfl_data.last_games) > 0 and len(self.data.nfl_data.games) == len(self.data.nfl_data.last_games) else None
+
             # Draw the current game
-            self.__draw_game(self.data.nfl_data.current_game())
+            self.__draw_game(self.data.nfl_data.current_game(), last_game)
 
             # Set the refresh rate
             refresh_rate = self.data.nfl_data.config.scrolling_speed
@@ -429,9 +431,9 @@ class MainRenderer:
 
         # return True
 
-    def __draw_game(self, game):
+    def __draw_game(self, game, last_game=None):
         time = self.data.nfl_data.get_current_date()
-        gametime = datetime.strptime(game['date'], "%Y-%m-%dT%H:%MZ")
+        gametime = self.data.nfl_data.get_gametime()
         if time < gametime - timedelta(hours=1) and game['state'] == 'pre':
             debug.info('Pre-Game State')
             self._draw_pregame(game)
@@ -443,7 +445,7 @@ class MainRenderer:
             self._draw_post_game(game)
         else:
             debug.info('Live State, checking every 5s')
-            self._draw_live_game(game)
+            self._draw_live_game(game, last_game)
         debug.info('ping render_game')
 
     def _draw_pregame(self, game):
@@ -496,7 +498,7 @@ class MainRenderer:
 
     def _draw_countdown(self, game):
         time = self.data.nfl_data.get_current_date()
-        gametime = datetime.strptime(game['date'], "%Y-%m-%dT%H:%MZ")
+        gametime = self.data.nfl_data.get_gametime()
         if time < gametime:
             gt = gametime - time
             # as beautiful as I am
@@ -544,15 +546,23 @@ class MainRenderer:
             self.draw = ImageDraw.Draw(self.image)
             # t.sleep(1)
 
-    def _draw_live_game(self, game):
-        homescore = game['homescore']
-        awayscore = game['awayscore']
+    def _draw_live_game(self, game, last_game):
+        if last_game == None:
+            last_game = game
+        homescore = last_game['homescore']
+        awayscore = last_game['awayscore']
+        yardLine = last_game['yardLine']
+
+        # print(f"Yardline {yardLine}")
+        # if yardLine != game['yardLine']:
+        #     print(f"YARDS GAINED: {game['yardLine'] - yardLine}")
+
         # print("home: ", homescore, "away: ", awayscore)
         # Refresh the data
-        if self.data.nfl_data.needs_refresh:
-            debug.info('Refresh game overview')
-            self.data.nfl_data.refresh_games()
-            self.data.nfl_data.needs_refresh = False
+        # if self.data.nfl_data.needs_refresh:
+        #     debug.info('Refresh game overview')
+        #     self.data.nfl_data.refresh_games()
+        #     self.data.nfl_data.needs_refresh = False
         # Use this code if you want the animations to run
         if game['homescore'] > homescore + 5 or game['awayscore'] > awayscore + 5:
             debug.info('should draw TD')
