@@ -85,7 +85,7 @@ class Config:
         self.demo_week = json["demo_week"]
         # Make sure the scrolling speed setting is in range so we don't crash
         try:
-            self.scrolling_speed = SCROLLING_SPEEDS[json["scrolling_speed"]]
+            self.scrolling_speed = json["scrolling_speed"] # SCROLLING_SPEEDS[json["scrolling_speed"]]
         except IndexError:
             debug.warning(
                 "Scrolling speed should be an integer between 0 and 6. Using default value of {}".format(

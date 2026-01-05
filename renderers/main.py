@@ -336,6 +336,7 @@ class MainRenderer:
             self.__draw_game(self.data.nfl_data.current_game(), last_game)
 
             # Set the refresh rate
+            print("REFRESH ", self.data.nfl_data.config.scrolling_speed)
             refresh_rate = self.data.nfl_data.config.scrolling_speed
             t.sleep(refresh_rate)
             endtime = t.time()
@@ -558,10 +559,7 @@ class MainRenderer:
         homescore = last_game['homescore']
         awayscore = last_game['awayscore']
         yardLine = last_game['yardLine']
-
-        # print(f"Yardline {yardLine}")
-        if yardLine != game['yardLine']:
-            print(f"YARDS GAINED: {game['yardLine'] - yardLine}")
+        down = last_game['down']
 
         # print("home: ", homescore, "away: ", awayscore)
         # Refresh the data
@@ -578,6 +576,9 @@ class MainRenderer:
             debug.info('should draw FG')
             print('should draw FG')
             self._draw_fg()
+        
+        yardsGained = game['yardLine'] - yardLine if down != game['down'] else None
+
         # Prepare the data
         # score = '{}-{}'.format(overview['awayscore'], overview['homescore'])
         if game['possession'] == game['awayid']:
@@ -595,9 +596,20 @@ class MainRenderer:
             info_pos = center_text(self.font_mini.getbbox(str(down))[2], 32)
             self.draw.multiline_text((info_pos, 19), str(down), fill=(255, 255, 255), font=self.font_mini, align="center")
         if game['spot']:
-            spot = game['spot'].replace(" ", "")
+            if yardsGained == None:
+                spot_fill = (255, 255, 255)
+            elif yardsGained > 0:
+                spot_fill = (0, 255, 0)
+            elif yardsGained < 0:
+                spot_fill = (255, 25, 25)
+
+            if yardsGained != None:
+                print(f"YARDS GAINED: {yardsGained}")
+                yardsGained = '+' + str(yardsGained) if yardsGained > 0 else str(yardsGained)
+            
+            spot = game['spot'].replace(" ", "") if yardsGained == None else yardsGained
             info_pos = center_text(self.font_mini.getbbox(spot)[2], 32)
-            self.draw.multiline_text((info_pos, 25), spot, fill=(255, 255, 255), font=self.font_mini, align="center")
+            self.draw.multiline_text((info_pos, 25), spot, fill=spot_fill, font=self.font_mini, align="center")
         pos_colour = (255, 255, 255)
         if game['redzone']:
             pos_colour = (255, 25, 25)
@@ -632,6 +644,7 @@ class MainRenderer:
             # Put the images on the canvas
             self.canvas.SetImage(away_team_logo.convert("RGB"), 1, 0)
             self.canvas.SetImage(home_team_logo.convert("RGB"), 43, 0)
+        
         # Set the position of each logo on screen.
         # awaysize = self.screen_config.team_logos_pos[game['awayteam']]['size']
         # homesize = self.screen_config.team_logos_pos[game['hometeam']]['size']
@@ -765,7 +778,7 @@ class MainRenderer:
             self.canvas.SetImage(im.convert('RGB'), 0, 0)
             self.canvas = self.matrix.SwapOnVSync(self.canvas)
             frameNo += 1
-            t.sleep(0.02)
+            t.sleep(0.05)
 
 def permanent_cond() -> bool:
     """A condition that is always true"""
