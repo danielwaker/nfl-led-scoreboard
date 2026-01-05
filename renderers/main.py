@@ -576,7 +576,10 @@ class MainRenderer:
             debug.info('should draw FG')
             print('should draw FG')
             self._draw_fg()
-        
+
+        home_score_fill = (255, 255, 255) if game['homescore'] == homescore else (0, 255, 0)
+        away_score_fill = (255, 255, 255) if game['awayscore'] == awayscore else (0, 255, 0)
+
         yardsGained = game['yardLine'] - yardLine if down != game['down'] else None
 
         # Prepare the data
@@ -596,7 +599,7 @@ class MainRenderer:
             info_pos = center_text(self.font_mini.getbbox(str(down))[2], 32)
             self.draw.multiline_text((info_pos, 19), str(down), fill=(255, 255, 255), font=self.font_mini, align="center")
         if game['spot']:
-            if yardsGained == None:
+            if yardsGained == None or yardsGained == 0:
                 spot_fill = (255, 255, 255)
             elif yardsGained > 0:
                 spot_fill = (0, 255, 0)
@@ -626,8 +629,8 @@ class MainRenderer:
         self.draw.multiline_text((info_pos, 13), pos, fill=pos_colour, font=self.font_mini, align="center")
         self.draw.multiline_text((quarter_position, 0), quarter, fill=(255, 255, 255), font=self.font_mini, align="center")
         self.draw.multiline_text((time_period_pos, 6), time_period, fill=(255, 255, 255), font=self.font_mini, align="center")
-        self.draw.multiline_text((6, 19), awayscore, fill=(255, 255, 255), font=self.font, align="center")
-        self.draw.multiline_text((59 - home_score_size, 19), homescore, fill=(255, 255, 255), font=self.font, align="center")
+        self.draw.multiline_text((6, 19), awayscore, fill=away_score_fill, font=self.font, align="center")
+        self.draw.multiline_text((59 - home_score_size, 19), homescore, fill=home_score_fill, font=self.font, align="center")
         # Put the data on the canvas
         self.canvas.SetImage(self.image, 0, 0)
         if self.data.nfl_data.helmet_logos:
