@@ -218,8 +218,8 @@
     },
     "postseason": {
       "matchup_y_gap": 6,
-      "series_x_gap": 16,
-      "wc_x_start": 2,
+      "series_x_gap": 13,
+      "wc_x_start": 1,
       "wc_y_start": 6,
       "ds_a_y_start": 25,
       "__comment": "all other coords are based off wild card position"

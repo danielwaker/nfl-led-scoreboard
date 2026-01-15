@@ -128,18 +128,41 @@ def render_bracket(canvas, layout, colors, league: League):
     wc36_y = coords["wc_y_start"]
     wc45_y = coords['ds_a_y_start'] - winner_offset
 
-    ds_x = wc_x + series_gap
+    ds_x = wc_x + series_gap*2
     ds_b_y = wc36_y + winner_offset
     ds_a_y = coords["ds_a_y_start"]
     lcs_x = ds_x + series_gap
     champ_y = (ds_a_y + ds_b_y) // 2 + winner_offset
     champ_x = lcs_x + series_gap
 
+    # divide wild card games X
+    graphics.DrawLine(
+        canvas, 0, (wc36_y + wc45_y ) // 2, (series_gap - 1) * 2, (wc36_y + wc45_y) // 2, divider_color
+    )
+
+    # graphics.DrawLine(
+    #     canvas, 0, (wc36_y + wc45_y ) // 3, (series_gap - 1) * 2, (wc36_y + wc45_y) // 3, divider_color
+    # )
+
+    # graphics.DrawLine(
+    #     canvas, 0, (wc36_y + wc45_y ) / 4 * 3, (series_gap - 1) * 2, (wc36_y + wc45_y) / 4 * 3, divider_color
+    # )
+
+    # divide wild card games Y
+    graphics.DrawLine(
+        canvas, series_gap - 1, 0, series_gap - 1, 32, divider_color
+    )
+
+    # divide bracket from wild card games
+    graphics.DrawLine(
+        canvas, ds_x - char_width // 2, 0, ds_x - char_width // 2, 32, divider_color
+    )
+
     # draw bracket lines
     # wc36 divider
-    graphics.DrawLine(canvas, wc_x, wc36_y, wc_x + series_gap - char_width // 2, wc36_y, divider_color)
-    # drop down
-    graphics.DrawLine(canvas, ds_x - char_width // 2, wc36_y, ds_x - char_width // 2, ds_b_y, divider_color)
+    # graphics.DrawLine(canvas, wc_x, wc36_y, wc_x + series_gap - char_width // 2, wc36_y, divider_color)
+    # # drop down
+    # graphics.DrawLine(canvas, ds_x - char_width // 2, wc36_y, ds_x - char_width // 2, ds_b_y, divider_color)
     # ds b divider
     graphics.DrawLine(
         canvas, ds_x - char_width // 2, ds_b_y, ds_x + series_gap - char_width // 2, ds_b_y, divider_color
@@ -150,9 +173,9 @@ def render_bracket(canvas, layout, colors, league: League):
     )
     # lower bracket
     # wc45 divider
-    graphics.DrawLine(canvas, wc_x, wc45_y, wc_x + series_gap - char_width // 2, wc45_y, divider_color)
-    # drop down
-    graphics.DrawLine(canvas, ds_x - char_width // 2, wc45_y, ds_x - char_width // 2, ds_a_y, divider_color)
+    # graphics.DrawLine(canvas, wc_x, wc45_y, wc_x + series_gap - char_width // 2, wc45_y, divider_color)
+    # # drop down
+    # graphics.DrawLine(canvas, ds_x - char_width // 2, wc45_y, ds_x - char_width // 2, ds_a_y, divider_color)
 
     # ds a divider
     graphics.DrawLine(
@@ -191,26 +214,37 @@ def render_bracket(canvas, layout, colors, league: League):
         canvas, champ_x - char_width // 2, champ_y - winner_offset, champ_x, champ_y - winner_offset, divider_color,
     )
 
+    # print(canvas, font["font"], wc_x, wc36_y, team_name_color, league.wc6)
+
     # draw bracket text
     # wc teams
-    graphics.DrawText(canvas, font["font"], wc_x, wc36_y, team_name_color, league.wc6)
-    graphics.DrawText(canvas, font["font"], wc_x, wc36_y + matchup_gap, team_name_color, league.wc3)
+    graphics.DrawText(canvas, font["font"], wc_x, wc36_y, team_name_color, league.wc6.team_abbrev)
+    graphics.DrawText(canvas, font["font"], wc_x, wc36_y + matchup_gap, team_name_color, league.wc3.team_abbrev)
+    # graphics.DrawText(canvas, font["font"], wc_x, wc36_y*1.25, team_name_color, league.wc6.team_abbrev)
+    # graphics.DrawText(canvas, font["font"], wc_x + series_gap-1, wc36_y*1.25, team_name_color, league.wc3.team_abbrev)
 
-    graphics.DrawText(canvas, font["font"], wc_x, wc45_y, team_name_color, league.wc5)
-    graphics.DrawText(canvas, font["font"], wc_x, wc45_y + matchup_gap, team_name_color, league.wc4)
+    graphics.DrawText(canvas, font["font"], wc_x, wc45_y, team_name_color, league.wc5.team_abbrev)
+    graphics.DrawText(canvas, font["font"], wc_x, wc45_y + matchup_gap, team_name_color, league.wc4.team_abbrev)
+    # graphics.DrawText(canvas, font["font"], wc_x, wc45_y*9/10, team_name_color, league.wc5.team_abbrev)
+    # graphics.DrawText(canvas, font["font"], wc_x + series_gap-1, wc45_y*9/10, team_name_color, league.wc4.team_abbrev)
+
+    graphics.DrawText(canvas, font["font"], wc_x - 1 + series_gap , wc45_y, team_name_color, league.wc7.team_abbrev)
+    graphics.DrawText(canvas, font["font"], wc_x - 1 + series_gap, wc45_y + matchup_gap, team_name_color, league.ds_B_bye.team_abbrev)
+    # graphics.DrawText(canvas, font["font"], wc_x , wc45_y*7/5, team_name_color, league.wc7.team_abbrev)
+    # graphics.DrawText(canvas, font["font"], wc_x + series_gap-1, wc45_y*7/5, team_name_color, league.ds_B_bye.team_abbrev)
 
 
     # DS B teams
-    graphics.DrawText(canvas, font["font"], ds_x, ds_b_y, team_name_color, league.wc36_winner)
-    graphics.DrawText(canvas, font["font"], ds_x, ds_b_y + matchup_gap, team_name_color, league.ds_B_bye)
+    graphics.DrawText(canvas, font["font"], ds_x - 1, ds_b_y, team_name_color, league.mid2.team_abbrev)
+    graphics.DrawText(canvas, font["font"], ds_x - 1, ds_b_y + matchup_gap, team_name_color, league.mid1.team_abbrev)
 
     # DS A
-    graphics.DrawText(canvas, font["font"], ds_x, ds_a_y, team_name_color, league.wc45_winner)
-    graphics.DrawText(canvas, font["font"], ds_x, ds_a_y + matchup_gap, team_name_color, league.ds_A_bye)
+    graphics.DrawText(canvas, font["font"], ds_x - 1, ds_a_y, team_name_color, league.bottom.team_abbrev)
+    graphics.DrawText(canvas, font["font"], ds_x - 1, ds_a_y + matchup_gap, team_name_color, league.ds_A_bye.team_abbrev)
 
     # LCS
-    graphics.DrawText(canvas, font["font"], lcs_x, ds_b_y + winner_offset, team_name_color, league.l_one)
-    graphics.DrawText(canvas, font["font"], lcs_x, ds_a_y + winner_offset, team_name_color, league.l_two)
+    graphics.DrawText(canvas, font["font"], lcs_x - 1, ds_b_y + winner_offset, team_name_color, league.l_one.team_abbrev)
+    graphics.DrawText(canvas, font["font"], lcs_x - 1, ds_a_y + winner_offset, team_name_color, league.l_two.team_abbrev)
 
     # league champ
-    graphics.DrawText(canvas, font["font"], champ_x + 1, champ_y, team_name_color, league.champ)
+    graphics.DrawText(canvas, font["font"], champ_x + 1 - 1, champ_y, team_name_color, league.champ.team_abbrev)

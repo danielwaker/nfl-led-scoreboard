@@ -213,7 +213,7 @@ class Config:
     #     return rotate_rate
 
     def parse_today(self):
-        if self.demo_date:
+        if self.demo_date and self.debug:
             today = datetime.strptime(self.demo_date, "%Y-%m-%d")
         else:
             today = datetime.today()

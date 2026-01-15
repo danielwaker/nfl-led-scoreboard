@@ -1,5 +1,6 @@
-from datetime import datetime
+from datetime import datetime, timezone
 import time
+
 from data.screens import ScreenType
 
 import debug
@@ -132,9 +133,13 @@ class Data:
         # if self.schedule.is_offday():
         #     return ScreenType.LEAGUE_OFFDAY
 
+        print(len(self.nfl_data.games))
+        print(self.nfl_data.get_current_date().day)
+        [print(datetime.strptime(game['date'], "%Y-%m-%dT%H:%MZ").replace(tzinfo=timezone.utc).astimezone().day) for game in self.nfl_data.games]
+
         # Full NFL Offday
         if (len(self.nfl_data.games) == 0 or
-            not any(datetime.strptime(game['date'], "%Y-%m-%dT%H:%MZ").day == self.nfl_data.get_current_date().day for game in self.nfl_data.games)):
+            not any(datetime.strptime(game['date'], "%Y-%m-%dT%H:%MZ").replace(tzinfo=timezone.utc).astimezone().day == self.nfl_data.get_current_date().day for game in self.nfl_data.games)):
             return ScreenType.LEAGUE_OFFDAY
 
         # # Preferred Team Offday

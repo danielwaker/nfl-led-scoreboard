@@ -72,8 +72,13 @@ def get_standings(
     # print(test)
     return team_ids, wins, ties, losses, gamesBehind, playoffSeed, clincher
 
+def get_postseason_start_date():
+    res = requests.get(SCOREBOARD_URL)
+    res = res.json()
+    return res['leagues'][0]['calendar'][SeasonType.PLAYOFFS.value - 1]['entries'][0]['startDate']
+
 def get_all_games(week):
-    print("ESPN API CALL")
+    print("ESPN API CALL ALL GAMES")
     # for i in range(5):
     try:
         res = requests.get(SCOREBOARD_URL+'?week='+week)
@@ -103,3 +108,38 @@ def get_all_games(week):
         #     print("Can't hit ESPN api after multiple retries, dying ", e)
     except Exception as e:
         print("something bad?", e)
+
+def get_playoff_games():
+    print("ESPN API CALL ALL GAMES")
+    # 1 = wild card, 2 = divisional, 3 = conference championship, 5 = super bowl
+    weeks = []
+    for i in [1,2,3,5]:
+        try:
+            res = requests.get(SCOREBOARD_URL+'?week='+str(i)+'&seasontype=3')
+            res = res.json()
+            games = []
+            # i = 0
+            for g in res['events']:
+                info = g['competitions'][0]
+                game = {'name': g['shortName'], 'date': g['date'],
+                        'hometeam': info['competitors'][0]['team']['abbreviation'], 'homeid': info['competitors'][0]['id'], 'homescore': int(info['competitors'][0]['score']),
+                        'awayteam': info['competitors'][1]['team']['abbreviation'], 'awayid': info['competitors'][1]['id'], 'awayscore': int(info['competitors'][1]['score']),
+                        'down': info.get('situation', {}).get('shortDownDistanceText'), 'spot': info.get('situation', {}).get('possessionText'),
+                        'time': info['status']['displayClock'], 'quarter': info['status']['period'], 'over': info['status']['type']['completed'],
+                        'redzone': info.get('situation', {}).get('isRedZone'), 'possession': info.get('situation', {}).get('possession'), 'state': info['status']['type']['state'],
+                        'timeout': info.get('situation',{}).get('lastPlay',{}).get('type',{}).get('abbreviation',{}),
+                        'yardLine': info.get('situation', {}).get('yardLine',{})}
+                games.append(game)
+                # i += 1
+            # print("games", len(games))
+            weeks.append(games)
+        except requests.exceptions.RequestException as e:
+            print("Error encountered getting game info, can't hit ESPN api, retrying")
+            # if i < 4:
+            #     t.sleep(1)
+            #     continue
+            # else:
+            #     print("Can't hit ESPN api after multiple retries, dying ", e)
+        except Exception as e:
+            print("something bad?", e)
+    return weeks

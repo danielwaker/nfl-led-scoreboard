@@ -37,7 +37,8 @@ class MainRenderer:
         self.game_changed_time = time.time()
         self.animation_time = 0
         self.standings_stat = "w"
-        self.standings_league = "NL" # TODO: NFC/AFC
+        self.standings_league = "NFC"
+        # self.standings_league = "NL"
 
         # NFL
         # self.font = ImageFont.truetype("fonts/score_large.otf", 16)
@@ -279,10 +280,12 @@ class MainRenderer:
 
             if self.data.standings.is_postseason():
                 if update % 20 == 0:
-                    if self.standings_league == "NL":
-                        self.standings_league = "AL"
+                    if self.standings_league == "NFC":
+                        self.standings_league = "AFC"
                     else:
-                        self.standings_league = "NL"
+                        self.standings_league = "NFC"
+                        break
+
             elif self.canvas.width == 32 and update % 5 == 0:
                 if self.standings_stat == "w":
                     self.standings_stat = "l"
