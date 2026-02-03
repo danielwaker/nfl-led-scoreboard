@@ -1,5 +1,6 @@
 import requests
 import json
+from espnapi.competitions import CompetitionType
 from espnapi.season import SeasonType
 from espnapi.groups import GroupType
 from espnapi.standings import StandingsType
@@ -95,7 +96,8 @@ def get_all_games(week):
                     'redzone': info.get('situation', {}).get('isRedZone'), 'possession': info.get('situation', {}).get('possession'), 'state': info['status']['type']['state'],
                     'timeout': info.get('situation',{}).get('lastPlay',{}).get('type',{}).get('abbreviation',{}),
                     'yardLine': info.get('situation', {}).get('yardLine',{})}
-            games.append(game)
+            if info['type']['id'] != str(CompetitionType.PRO_BOWL.value): # TODO: Accomodate Pro Bowl some day, I guess, if anyone cares
+                games.append(game)
             # i += 1
         # print("games", len(games))
         return games
